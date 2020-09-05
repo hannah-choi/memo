@@ -1,8 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('reset.css');
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Alata', sans-serif;
+  color:#3C221C;
+  display: flex;
 }
 
+.lightbrown{
+  background-color: #A67C58;
+}
+
+.beige{
+  background-color: #F2DCC2;
+}
+
+.lightblue{
+  background-color: #ACBDCD;
+}
+
+form, textarea{
+  background-color: inherit;
+  border:none;
+}
+
+
+section.memoList{
+  width:15%;
+  padding:2rem;
+}
+
+section.memoList li{
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+section.memoList .circle{
+  margin-right:0.5rem;
+  width:15px;
+  height:15px;
+  display: inline-block;
+}
+
+section.memos{
+  width:85%;
+  padding:2rem;
+  display: flex;
+}
+
+
 a {
-  color: #00B7FF;
+  text-decoration:none;
+
+}
+
+div.post{
+  width: 350px;
+  height:350px;
+  padding:10px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+div.post header.postHeader img{
+  width:13px;
+  margin-right: 3px;
+  
+}
+div.post article{
+  padding:1rem;
+}
+
+div.post textarea{
+  width:100%;
+  font-family: inherit;
+  min-height: 250px;
+  color:inherit;
+}
+
+div.post textarea:focus{
+  outline:none;
+
 }
