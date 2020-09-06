@@ -1,42 +1,41 @@
+import MemoManager from './MemoManager.js'
 
-    .addEventListener('click', ({target})=>{
+
+const data = [
+
+    {   
+        text:"dkfjasdasdsdklfjd",
+        category:0,
+        color: "lightblue",
+        id:1
+
+    },
+
+    {   
+        text:"dfgsdgfgfgdfgd",
+        category:1,
+        id:2,
+        color:"lightbrown"
+
+    }
+
+]
+
+
+const memoApp = new MemoManager(data)
+const memoSection = document.querySelector('.memoSection')
+
+
+memoSection.addEventListener('click', ({target})=>{
+        //console.log(target)
         switch(target.dataset.name){
-            case 'delete': memo.delete(){
-
-            }
-            case 'create': memo.create(){
-
-            }
-            case 'edit': memo.edit(){
-
-            }
+            case "create":
+                memoApp.createMemo()
+                break;
+            case "remove":
+                memoApp.removeMemo(target.dataset.id)
+            default:
+                return
         }
     })
-
-
-
-class Memo{
-    constructor(){
-        this.memoList = []
-    }
-    setState(data){
-        this.listRender()
-    }
-    create(){    
-        this.memoList.push()
-        this.listRender(data)
-    }
-    edit(){
-           
-    }
-    delete(){
-
-    }
-    listRender(rows){ //데이터를 받아서 리스트를 그려주는 역할
-        for(let i = 0; i<rows.length; i++){
-            let contents = '';
-            contents += `<div src..>`
-        }
-
-    }
-}
+    
