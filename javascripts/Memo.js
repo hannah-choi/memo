@@ -17,7 +17,7 @@ class Memo{
 
     }
     render(){
-        return `<div class="post ${this.memoColor}" data-id="${this.memoId}">
+        return `<div class="post ${this.memoColor}" data-id="${this.memoId}" draggable="true">
                     <header class="postHeader">
                         <a class="create" href="#" data-name="create"><img src="images/add.svg" data-name="create"></a>
                         <a class="edit" href="#" data-name="edit"><img src="images/edit.svg"></a>
@@ -25,7 +25,7 @@ class Memo{
                     </header>
                     <article class="postMain">
                         <form action="">
-                        <textarea class="text">${this.memoContents}</textarea>
+                        <textarea class="text" data-id="${this.memoId}">${this.memoContents}</textarea>
                         <input type="text" hidden>
                     </form>
                     </article>

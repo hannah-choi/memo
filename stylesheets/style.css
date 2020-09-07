@@ -1,23 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
 @import url('reset.css');
 
 body {
-  font-family: 'Alata', sans-serif;
+  font-family: 'Sen', sans-serif;
   color:#3C221C;
   display: flex;
 }
 
-.lightbrown{
-  background-color: #A67C58;
+.darkblue{
+  background-color: #293473;
+  color:white;
 }
 
-.beige{
-  background-color: #F2DCC2;
+.blue{
+  background-color: #32489D;
+  color:white;
 }
 
 .lightblue{
-  background-color: #ACBDCD;
+  background-color: #697FBF;
+  color:#14194A;
 }
+
+.brightred{
+    background-color: #F25C5C;
+    color:white;
+}
+
+.lightpink{
+    background-color: #F2D5D5;
+    color:#293473;
+}
+
 
 form, textarea{
   background-color: inherit;
