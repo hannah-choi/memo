@@ -4,12 +4,13 @@ class MemoManager{
     constructor(data){
         this.data = data
         this.memoSection = document.querySelector('.memoSection')
-        this.memos = data.map(data => new Memo(data.text, data.color, data.id))
+        this.memos = data.map(data => new Memo(data.text, data.color, data.id, false))
         this.listRender()
+        this.selected = null;
     }
 
     createMemo(){
-        const memo = new Memo("", "beige", 3)
+        const memo = new Memo("", "brightred", 3)
         this.memos.push(memo)
         this.listRender()
     }
@@ -25,6 +26,29 @@ class MemoManager{
         this.memos[selectedId].memoContents = newValue
         //console.log(this.memos[selectedId].memoContents)
         this.listRender()
+    }
+
+    minimize(selected){
+        selected.parentElement.nextElementSibling.style.display = "none";
+        selected.src = "images/maximize.svg";
+        selected.dataset.name = 'maximize'
+    }
+
+    maximize(selected){
+        selected.parentElement.nextElementSibling.style.display = "block";
+        selected.src = "images/minimize.svg";
+        selected.dataset.name = 'minimize';
+    }
+
+    bringFront(clickedItem){
+        this.selected.style.zIndex = 0;
+        this.selected = target;
+        clickedItem.style.zIndex = 500;
+        
+        // if(this.selected === 500){
+        //     this.selected = 0
+        // }
+       
     }
 
     listRender(){ //데이터를 받아서 리스트를 그려주는 역할

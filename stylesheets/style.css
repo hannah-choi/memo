@@ -60,9 +60,12 @@ section.memoList .circle{
 section.memos{
   width:85%;
   padding:2rem;
-  display: flex;
 }
 
+section.memoSection{
+  width:4000px;
+  height:4000px;
+}
 
 a {
   text-decoration:none;
@@ -71,10 +74,10 @@ a {
 
 div.post{
   width: 350px;
-  height:350px;
-  padding:10px;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  left:500px;
+  top:150px;
 }
 
 
@@ -82,9 +85,6 @@ div.post header.postHeader img{
   width:13px;
   margin-right: 3px;
   
-}
-div.post article{
-  padding:1rem;
 }
 
 div.post textarea{
