@@ -7,7 +7,6 @@ class MemoManager{
         this.memos = data.map(data => new Memo(data.text, data.color, data.id, false))
         this.listRender()
         this.selected = null;
-        contextMenu = document.querySelector('.contextMenu')
     }
 
     createMemo(){
@@ -56,7 +55,6 @@ class MemoManager{
         const memosArray = this.memos.map(memo => memo.render()).join('')
         this.memoSection.innerHTML = memosArray
 }
-
 
 }
 

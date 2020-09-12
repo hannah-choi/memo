@@ -1,5 +1,5 @@
 import MemoManager from './MemoManager.js'
-
+import ContextMenu from './ContextMenu.js'
 
 const data = [
 
@@ -39,9 +39,9 @@ const data = [
 
 
 const memoApp = new MemoManager(data)
+const contextMenu = new ContextMenu()
 const memoSection = document.querySelector('.memoSection')
 let posts = document.querySelectorAll('.post')
-const contextMenu = document.querySelector('.contextMenu')
 let dragElement;
 
 //const eachMemo = document.querySelectorAll('.post')
@@ -122,14 +122,15 @@ posts.forEach(post => {
     })
 })
 
-posts.forEach(post => {
-    post.addEventListener('contextmenu',(e)=>{
-        e.preventDefault(); 
-        contextMenu.style.top = `${e.clientY}px`
-        contextMenu.style.left = `${e.clientX}px`
-        contextMenu.classList.add('menuShow')
+
+memoSection.addEventListener('contextmenu', (e)=>{
+    e.preventDefault(); 
+    contextMenu.rightClick(e.clientY, e.clientX)
+    if(!e.target.className === 'memoSection'){
+        return;
+    }
 })
-})
+
 
 window.addEventListener('scroll', (e)=>{
     contextMenu.classList.remove('menuShow')
