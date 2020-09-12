@@ -82,6 +82,10 @@ div.post{
   z-index: 0;
 }
 
+div.post header{
+  padding:10px;
+}
+
 
 div.post header.postHeader img{
   width:13px;
@@ -90,6 +94,7 @@ div.post header.postHeader img{
 }
 
 div.post textarea{
+  padding: 0 10px;
   width:100%;
   font-family: inherit;
   min-height: 250px;

@@ -78,17 +78,6 @@ memoSection.addEventListener('click', ({target})=>{
     })
 
 
-
-posts.forEach(post => {
-    post.addEventListener('click', (e)=>{
-        posts.forEach(item => {
-            item.style.zIndex = "0"
-        })
-        post.style.zIndex = "10"
-    })
-})
-
-
 memoSection.addEventListener('change', ({target})=>{
     switch(target.tagName){
         case "TEXTAREA":
@@ -125,6 +114,15 @@ memoSection.addEventListener('drop', (e)=>{
 
 
 posts.forEach(post => {
+    post.addEventListener('click', (e)=>{
+        posts.forEach(item => {
+            item.style.zIndex = "0"
+        })
+        post.style.zIndex = "10"
+    })
+})
+
+posts.forEach(post => {
     post.addEventListener('contextmenu',(e)=>{
         e.preventDefault(); 
         contextMenu.style.top = `${e.clientY}px`
@@ -133,16 +131,11 @@ posts.forEach(post => {
 })
 })
 
-// memoSection.addEventListener('contextmenu',(e)=>{
-//     console.log(contextMenu)
-//     e.preventDefault(); 
-//     contextMenu.style.top = e.offsetY.top + "px";
-//     contextMenu.style.left = e.offsetX.top + "px";
-//     contextMenu.classList.add('menuShow')
-//     if(!e.target.tagName === "TEXTAREA"){
-//         return;
-//     }
-// })
+window.addEventListener('scroll', (e)=>{
+    contextMenu.classList.remove('menuShow')
+})
+
+
 
 // memoSection.addEventListener('drag',(e)=>{
 // })

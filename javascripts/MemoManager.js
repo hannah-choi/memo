@@ -7,6 +7,7 @@ class MemoManager{
         this.memos = data.map(data => new Memo(data.text, data.color, data.id, false))
         this.listRender()
         this.selected = null;
+        contextMenu = document.querySelector('.contextMenu')
     }
 
     createMemo(){
@@ -49,6 +50,7 @@ class MemoManager{
     //         this.selected.zIndex = 10
     //         clickedItem.style.zIndex = 0 }
     // }
+
 
     listRender(){ //데이터를 받아서 리스트를 그려주는 역할
         const memosArray = this.memos.map(memo => memo.render()).join('')
