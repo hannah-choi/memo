@@ -105,13 +105,25 @@ div.contextMenu{
   position: fixed;
   font-size: 0.8rem;
   width:120px;
-  height:125px;
+  height:133px;
   border:1px solid gray;
-  padding:5px;
-  z-index: 50;
+  z-index: 100;
   background-color:white;
+  transform:scale(0);
+  opacity: 0;
 }
 
-div.contextMenu div.contextItem{
-  padding:8px;
+div.menuShow{
+  opacity: 1;
+  transform:scale(1);
+  transform-origin: top left;
+}
+
+div.contextMenu li.contextItem{
+  padding:10px;
+}
+
+div.contextMenu li.contextItem:hover{
+  background-color: #F25C5C;
+  color:white;
 }

@@ -41,6 +41,7 @@ const data = [
 const memoApp = new MemoManager(data)
 const memoSection = document.querySelector('.memoSection')
 let posts = document.querySelectorAll('.post')
+const contextMenu = document.querySelector('.contextMenu')
 let dragElement;
 
 //const eachMemo = document.querySelectorAll('.post')
@@ -71,6 +72,7 @@ memoSection.addEventListener('click', ({target})=>{
             //     memoApp.bringFront(clickedItem)
             //     break;
             default:
+                contextMenu.classList.remove('menuShow')
                 return
         }
     })
@@ -120,6 +122,27 @@ memoSection.addEventListener('drop', (e)=>{
     selected.style.left = e.pageX+"px";
     selected.style.top = e.pageY+"px";
 })
+
+
+posts.forEach(post => {
+    post.addEventListener('contextmenu',(e)=>{
+        e.preventDefault(); 
+        contextMenu.style.top = `${e.clientY}px`
+        contextMenu.style.left = `${e.clientX}px`
+        contextMenu.classList.add('menuShow')
+})
+})
+
+// memoSection.addEventListener('contextmenu',(e)=>{
+//     console.log(contextMenu)
+//     e.preventDefault(); 
+//     contextMenu.style.top = e.offsetY.top + "px";
+//     contextMenu.style.left = e.offsetX.top + "px";
+//     contextMenu.classList.add('menuShow')
+//     if(!e.target.tagName === "TEXTAREA"){
+//         return;
+//     }
+// })
 
 // memoSection.addEventListener('drag',(e)=>{
 // })
