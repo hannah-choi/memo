@@ -43,15 +43,14 @@ class MemoManager{
         selected.dataset.name = 'minimize';
     }
 
-    // bringFront(clickedItem){
-    //     this.selected = clickedItem; //store the previously clicked element
-    //     if(!clickedItem.style.zIndex == 10 || !clickedItem.style.zIndex){
-    //         this.selected.zIndex = 0
-    //         clickedItem.style.zIndex = 10
-    //     } else { 
-    //         this.selected.zIndex = 10
-    //         clickedItem.style.zIndex = 0 }
-    // }
+    bringFront(clickedItem){
+        if(this.selected){
+            this.selected.style.zIndex = 0;
+        }
+        this.selected = clickedItem; //store the previously clicked element
+        this.selected.style.zIndex = 10;
+        console.log(this.selected)
+    }
 
     dragStart(e){
         const id = e.target.dataset.id

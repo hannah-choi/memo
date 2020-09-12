@@ -8,7 +8,6 @@ const data = localStorage.getData()
 const memoApp = new MemoManager(data)
 const contextMenu = new ContextMenu()
 const memoSection = document.querySelector('.memoSection')
-let posts = document.querySelectorAll('.post')
 let dragElement;
 
 
@@ -28,18 +27,17 @@ memoSection.addEventListener('click', ({target})=>{
             case "maximize":
                 memoApp.maximize(target)
                 break;
-            // case "post":
-            //     let clickedItem ="";
-            //     if(target.tagName === "HEADER"){
-            //         clickedItem = target.parentElement
-            //     } else if (target.tagName === "TEXTAREA" || target.tagName === "ARTICLE") {
-            //         clickedItem = target.parentElement.parentElement.parentElement
-            //     }
-            //     console.log(clickedItem.style.zIndex)
-            //     memoApp.bringFront(clickedItem)
-            //     break;
+            case "post":
+                let clickedItem ="";
+                if(target.tagName === "HEADER"){
+                    clickedItem = target.parentElement
+                } else if (target.tagName === "TEXTAREA" || target.tagName === "ARTICLE") {
+                    clickedItem = target.parentElement.parentElement.parentElement
+                }
+                memoApp.bringFront(clickedItem)
+                break;
             default:
-                return
+                return;
         }
     })
 
@@ -81,16 +79,6 @@ memoSection.addEventListener('drop', (e)=>{
 })
 
 
-posts.forEach(post => {
-    post.addEventListener('click', (e)=>{
-        posts.forEach(item => {
-            item.style.zIndex = "0"
-        })
-        post.style.zIndex = "10"
-    })
-})
-
-
 memoSection.addEventListener('contextmenu', (e)=>{
     e.preventDefault(); 
     if(e.target.className === 'memoSection'){
@@ -98,9 +86,6 @@ memoSection.addEventListener('contextmenu', (e)=>{
     }
     contextMenu.rightClick(e.clientY, e.clientX)
 })
-
-
-
 
 
 // memoSection.addEventListener('drag',(e)=>{
