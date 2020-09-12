@@ -17,6 +17,22 @@ const data = [
         id:2,
         color:"blue"
 
+    },
+
+    {   
+        text:"Ad aliqua in minim tempor excepteur quis duis anim fugiat fugiat ipsum occaecat eu.",
+        category:1,
+        id:3,
+        color:"brightred"
+
+    },
+
+    {   
+        text:"Ad aliqua in minim tempor excepteur quis duis anim fugiat fugiat ipsum occaecat eu.",
+        category:1,
+        id:4,
+        color:"lightpink"
+
     }
 
 ]
@@ -24,6 +40,7 @@ const data = [
 
 const memoApp = new MemoManager(data)
 const memoSection = document.querySelector('.memoSection')
+let posts = document.querySelectorAll('.post')
 let dragElement;
 
 //const eachMemo = document.querySelectorAll('.post')
@@ -43,25 +60,31 @@ memoSection.addEventListener('click', ({target})=>{
             case "maximize":
                 memoApp.maximize(target)
                 break;
-            case "post":
-                let clickedItem ="";
-                if(target.tagName === "HEADER"){
-                    clickedItem = target.parentElement
-                } else if (target.tagName === "TEXTAREA" || target.tagName === "ARTICLE") {
-                    clickedItem = target.parentElement.parentElement.parentElement
-                }
-                console.log(clickedItem)
-                memoApp.bringFront(clickedItem)
-                break;
+            // case "post":
+            //     let clickedItem ="";
+            //     if(target.tagName === "HEADER"){
+            //         clickedItem = target.parentElement
+            //     } else if (target.tagName === "TEXTAREA" || target.tagName === "ARTICLE") {
+            //         clickedItem = target.parentElement.parentElement.parentElement
+            //     }
+            //     console.log(clickedItem.style.zIndex)
+            //     memoApp.bringFront(clickedItem)
+            //     break;
             default:
                 return
         }
     })
 
-// eachMemo.addEventListener('focus',({target})=>{
 
-// })
 
+posts.forEach(post => {
+    post.addEventListener('click', (e)=>{
+        posts.forEach(item => {
+            item.style.zIndex = "0"
+        })
+        post.style.zIndex = "10"
+    })
+})
 
 
 memoSection.addEventListener('change', ({target})=>{
@@ -76,7 +99,6 @@ memoSection.addEventListener('change', ({target})=>{
 
 
 memoSection.addEventListener('dragstart',(e)=>{
-    console.log('dragstart')
     if(!e.target.className === 'post'){
         return;
     } 
@@ -85,7 +107,6 @@ memoSection.addEventListener('dragstart',(e)=>{
 })
 
 memoSection.addEventListener('dragover',(e)=>{
-    console.log('dragover')
     e.preventDefault();
     if(!e.target.className === 'post'){
         return;

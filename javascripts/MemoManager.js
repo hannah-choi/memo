@@ -40,21 +40,22 @@ class MemoManager{
         selected.dataset.name = 'minimize';
     }
 
-    bringFront(clickedItem){
-        this.selected.style.zIndex = 0;
-        this.selected = target;
-        clickedItem.style.zIndex = 500;
-        
-        // if(this.selected === 500){
-        //     this.selected = 0
-        // }
-       
-    }
+    // bringFront(clickedItem){
+    //     this.selected = clickedItem; //store the previously clicked element
+    //     if(!clickedItem.style.zIndex == 10 || !clickedItem.style.zIndex){
+    //         this.selected.zIndex = 0
+    //         clickedItem.style.zIndex = 10
+    //     } else { 
+    //         this.selected.zIndex = 10
+    //         clickedItem.style.zIndex = 0 }
+    // }
 
     listRender(){ //데이터를 받아서 리스트를 그려주는 역할
         const memosArray = this.memos.map(memo => memo.render()).join('')
         this.memoSection.innerHTML = memosArray
 }
+
+
 }
 
 

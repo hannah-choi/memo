@@ -78,6 +78,8 @@ div.post{
   margin-bottom: 1rem;
   left:500px;
   top:150px;
+  position: relative;
+  z-index: 0;
 }
 
 
@@ -97,4 +99,19 @@ div.post textarea{
 div.post textarea:focus{
   outline:none;
 
+}
+
+div.contextMenu{
+  position: fixed;
+  font-size: 0.8rem;
+  width:120px;
+  height:125px;
+  border:1px solid gray;
+  padding:5px;
+  z-index: 50;
+  background-color:white;
+}
+
+div.contextMenu div.contextItem{
+  padding:8px;
 }
