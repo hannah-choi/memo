@@ -1,5 +1,6 @@
 import Memo from './Memo.js'
 
+
 class MemoManager{
     constructor(data){
         this.data = data
@@ -7,6 +8,8 @@ class MemoManager{
         this.memos = data.map(data => new Memo(data.text, data.color, data.id, false))
         this.listRender()
         this.selected = null;
+        this.shiftX = null;
+        this.shiftY = null;
     }
 
     createMemo(){
@@ -49,6 +52,22 @@ class MemoManager{
     //         this.selected.zIndex = 10
     //         clickedItem.style.zIndex = 0 }
     // }
+
+    dragStart(e){
+        const id = e.target.dataset.id
+        e.dataTransfer.setData("text", id)
+
+        this.shiftX = e.pageX - e.target.getBoundingClientRect().left
+        this.shiftY = e.pageY - e.target.getBoundingClientRect().top
+    }
+
+
+    htmlPositionUpdate(selected, pageXValue, pageYvalue){
+            selected.style.left = pageXValue
+            selected.style.top = pageYvalue
+            }
+    
+
 
 
     listRender(){ //데이터를 받아서 리스트를 그려주는 역할
