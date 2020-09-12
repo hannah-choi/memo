@@ -40,7 +40,7 @@ form, textarea{
 
 
 section.memoList{
-  width:15%;
+  width:200px;
   padding:2rem;
 }
 
@@ -57,14 +57,14 @@ section.memoList .circle{
   display: inline-block;
 }
 
-section.memos{
+/* section.memos{
   width:85%;
   padding:2rem;
-}
+} */
 
 section.memoSection{
-  width:4000px;
-  height:4000px;
+  width:80vw;
+  height:100vh;
 }
 
 a {
@@ -76,8 +76,7 @@ div.post{
   width: 350px;
   margin-right: 1rem;
   margin-bottom: 1rem;
-  left:500px;
-  top:150px;
+  left:400px;
   position: relative;
   z-index: 0;
 }

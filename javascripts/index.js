@@ -108,8 +108,8 @@ memoSection.addEventListener('drop', (e)=>{
     e.preventDefault();
     const id = e.dataTransfer.getData("text")
     let selected = document.querySelector(`[data-id="${id}"]`)
-    selected.style.left = e.pageX+"px";
-    selected.style.top = e.pageY+"px";
+    selected.style.left = `${e.pageX-200}px`;
+    selected.style.top = `${e.pageY}px`;
 })
 
 
@@ -125,10 +125,10 @@ posts.forEach(post => {
 
 memoSection.addEventListener('contextmenu', (e)=>{
     e.preventDefault(); 
-    contextMenu.rightClick(e.clientY, e.clientX)
-    if(!e.target.className === 'memoSection'){
+    if(e.target.className === 'memoSection'){
         return;
     }
+    contextMenu.rightClick(e.clientY, e.clientX)
 })
 
 
