@@ -66,9 +66,6 @@ class MemoManager{
             selected.style.top = pageYvalue
             }
     
-
-
-
     listRender(){ //데이터를 받아서 리스트를 그려주는 역할
         const memosArray = this.memos.map(memo => memo.render()).join('')
         this.memoSection.innerHTML = memosArray

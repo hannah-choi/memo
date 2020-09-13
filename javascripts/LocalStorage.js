@@ -11,12 +11,8 @@ class LocalStorage{
         let dataFind = this.data.find(item=> item.id === +selected.dataset.id)
         dataFind.pageX = pageXValue
         dataFind.pageY = pageYvalue
-
         localStorage.setItem('data', JSON.stringify(this.data))
         }
-
 }
-
-
 
 export default LocalStorage
