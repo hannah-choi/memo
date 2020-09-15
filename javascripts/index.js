@@ -1,15 +1,16 @@
 import MemoManager from './MemoManager.js'
 import ContextMenu from './ContextMenu.js'
 import LocalStorageClass from './LocalStorageClass.js'
+import BgMenu from './BgMenu.js'
 
-
-const contextMenu = new ContextMenu()
+const memoSection = document.querySelector('.memoSection')
+const contextMenu = new ContextMenu(memoSection)
 const localStorageClass = new LocalStorageClass()
 const data = localStorageClass.getData()
 const memoApp = new MemoManager(data)
+const bgMenu = new BgMenu(memoSection)
 
 const contextMenuDiv = document.querySelector('.contextMenu');
-const memoSection = document.querySelector('.memoSection')
 let rightClick = null;
 
 
@@ -46,15 +47,23 @@ memoSection.addEventListener('click', ({target})=>{
 memoSection.addEventListener('contextmenu', (e)=>{
     e.preventDefault(); 
     let clickedItem = ""
+
     if(e.target.tagName === "HEADER"){
         clickedItem = e.target.parentElement
+        contextMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
     } else if (e.target.tagName === "TEXTAREA" || e.target.tagName === "ARTICLE") {
         clickedItem = e.target.parentElement.parentElement.parentElement
-    } else {
+        contextMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
+    } 
+    
+    else if (e.target.className = "memoSection"){
+        clickedItem = e.target;
+        bgMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
+    } else{
         return;
     }
     rightClick = clickedItem;
-    contextMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
+    
 })
 
 contextMenuDiv.addEventListener('click', ({target})=>{
@@ -66,14 +75,6 @@ contextMenuDiv.addEventListener('click', ({target})=>{
     }   
 })
 
-// posts.forEach(post => {
-//     post.addEventListener('click', (e)=>{
-//         posts.forEach(item => {
-//             item.style.zIndex = "0"
-//         })
-//         post.style.zIndex = "10"
-//     })
-// })
 
 memoSection.addEventListener('change', ({target})=>{
     switch(target.tagName){
