@@ -43,17 +43,12 @@ class MemoManager{
     }
 
     bringFront(clickedItem){
-        this.selected = clickedItem;
-        if(this.selected !== null){
-            clickedItem.style.zIndex == 10
-            this.selected.zIndex = clickedItem.style.zIndex;
-        } //store the previously clicked element
-        if(clickedItem.style.zIndex !== 10){
-            this.selected.zIndex = 0
-            clickedItem.style.zIndex = 10
-        } else { 
-            this.selected.zIndex = 10
-            clickedItem.style.zIndex = 0 }
+        if(this.selected){
+            this.selected.style.zIndex = 0;
+        }
+        this.selected = clickedItem; //store the previously clicked element
+        this.selected.style.zIndex = 10;
+        console.log(this.selected)
     }
 
     dragStart(e){
