@@ -2,10 +2,11 @@ import MemoManager from './MemoManager.js'
 import ContextMenu from './ContextMenu.js'
 import LocalStorageClass from './LocalStorageClass.js'
 
-const data = JSON.parse(localStorage.getItem('data'))
+
 const memoApp = new MemoManager(data)
 const contextMenu = new ContextMenu()
-const localStorageClass = new LocalStorageClass(data)
+const localStorageClass = new LocalStorageClass()
+const data = localStorageClass.getData()
 const contextMenuDiv = document.querySelector('.contextMenu');
 const memoSection = document.querySelector('.memoSection')
 let rightClick = null;
