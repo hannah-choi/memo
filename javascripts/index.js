@@ -1,17 +1,15 @@
 import MemoManager from './MemoManager.js'
 import ContextMenu from './ContextMenu.js'
-import LocalStorage from './LocalStorage.js'
+import LocalStorageClass from './LocalStorageClass.js'
 
-
-const localStorage = new LocalStorage()
-const data = localStorage.getData()
+const data = JSON.parse(localStorage.getItem('data'))
 const memoApp = new MemoManager(data)
 const contextMenu = new ContextMenu()
+const localStorageClass = new LocalStorageClass(data)
+const contextMenuDiv = document.querySelector('.contextMenu');
 const memoSection = document.querySelector('.memoSection')
-let dragElement;
+let rightClick = null;
 
-
-//const eachMemo = document.querySelectorAll('.post')
 
 memoSection.addEventListener('click', ({target})=>{
         switch(target.dataset.name){
@@ -37,10 +35,43 @@ memoSection.addEventListener('click', ({target})=>{
                 memoApp.bringFront(clickedItem)
                 break;
             default:
+                contextMenuDiv.classList.remove('menuShow')
                 return;
         }
     })
 
+    
+memoSection.addEventListener('contextmenu', (e)=>{
+    e.preventDefault(); 
+    let clickedItem = ""
+    if(e.target.tagName === "HEADER"){
+        clickedItem = e.target.parentElement
+    } else if (e.target.tagName === "TEXTAREA" || e.target.tagName === "ARTICLE") {
+        clickedItem = e.target.parentElement.parentElement.parentElement
+    } else {
+        return;
+    }
+    rightClick = clickedItem;
+    contextMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
+})
+
+contextMenuDiv.addEventListener('click', ({target})=>{
+    switch(target.dataset.name){
+        case "color":
+            contextMenu.memoColorChange(target.className)
+            localStorageClass.colorChange(rightClick, target.className)
+            break;
+    }   
+})
+
+// posts.forEach(post => {
+//     post.addEventListener('click', (e)=>{
+//         posts.forEach(item => {
+//             item.style.zIndex = "0"
+//         })
+//         post.style.zIndex = "10"
+//     })
+// })
 
 memoSection.addEventListener('change', ({target})=>{
     switch(target.tagName){
@@ -48,10 +79,8 @@ memoSection.addEventListener('change', ({target})=>{
             memoApp.updateMemo(target.dataset.id, target.value);
             data[target.dataset.id].text = target.value
             break;
-    }
-    
-})
-
+    }    
+}) 
 
 memoSection.addEventListener('dragstart',(e)=>{
     if(!e.target.className === 'post'){
@@ -72,28 +101,13 @@ memoSection.addEventListener('drop', (e)=>{
     const id = e.dataTransfer.getData("text")
     let selected = document.querySelector(`[data-id="${id}"]`)    
     let pageXValue = e.pageX-200 - memoApp.shiftX + "px";
-    let pageYvalue = e.pageY - memoApp.shiftY + "px";
+    let pageYValue = e.pageY - memoApp.shiftY + "px";
 
-    localStorage.dropStorageUpdate(selected, pageXValue, pageYvalue)
-    memoApp.htmlPositionUpdate(selected, pageXValue, pageYvalue)
+    memoApp.drop(selected, pageXValue, pageYValue)
+    localStorageClass.pageUpdate(selected, pageXValue, pageYValue)
 })
 
 
-memoSection.addEventListener('contextmenu', (e)=>{
-    e.preventDefault(); 
-    if(e.target.className === 'memoSection'){
-        return;
-    }
-    contextMenu.rightClick(e.clientY, e.clientX)
+document.addEventListener('scroll', (e)=>{
+    contextMenuDiv.classList.remove('menuShow')
 })
-
-
-// memoSection.addEventListener('drag',(e)=>{
-// })
-
-// memoSection.addEventListener('dragstart',({target})=>{
-// })
-
-// memoSection.addEventListener("drop", (e)=> {
-//     e.preventDefault();
-//   });

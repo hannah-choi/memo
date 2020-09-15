@@ -1,15 +1,16 @@
-
-
 class Memo{
-    constructor(memoContents, memoColor, memoId){
+    constructor(memoContents, memoColor, memoId, memoPageX, memoPageY){
         this.memoContents = memoContents
         this.memoColor = memoColor
         this.memoId = memoId
+        this.memoPageX = memoPageX
+        this.memoPageY = memoPageY
     }
 
     create(){
         Memo.listRender(data)
     }
+    
     edit(){
            
     }
@@ -17,7 +18,7 @@ class Memo{
 
     }
     render(){
-        return `<div class="post ${this.memoColor}" data-id="${this.memoId}" draggable="true">
+        return `<div class="post ${this.memoColor}" data-id="${this.memoId}" data-color="${this.memoColor}" draggable="true" spellcheck="false" style="left: ${this.memoPageX}; top: ${this.memoPageY};">
                     <header class="postHeader" data-name="post">
                         <img src="images/add.svg" data-name="create">
                         <img src="images/remove.svg" data-name="remove" data-id="${this.memoId}">

@@ -1,12 +1,20 @@
 class ContextMenu{
     constructor(){
-        this.menu = document.querySelector('.contextMenu')
+        this.clickedItem = null;
     }
 
-    rightClick(clientY,clientX){
-        this.menu.style.top = `${clientY}px`
-        this.menu.style.left = `${clientX}px`
-        this.menu.classList.add('menuShow')
+    memoColorChange(colorName){
+        this.clickedItem.classList.remove(`${this.clickedItem.dataset.color}`)
+        this.clickedItem.classList.add(`${colorName}`)
+        this.clickedItem.dataset.color = `${colorName}`
+    }
+
+    rightButtonClick(clickedItem, clientY,clientX){
+        this.clickedItem = clickedItem
+        const contextMenu = document.querySelector('.contextMenu');
+        contextMenu.style.top = clientY + "px";
+        contextMenu.style.left = clientX + "px";
+        contextMenu.classList.add('menuShow')
     }
 
 }

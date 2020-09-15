@@ -41,7 +41,10 @@ form, textarea{
 
 section.memoList{
   width:200px;
+<<<<<<< HEAD
   padding:2rem;
+=======
+>>>>>>> review1
 }
 
 section.memoList li{
@@ -63,7 +66,11 @@ section.memoList .circle{
 } */
 
 section.memoSection{
+<<<<<<< HEAD
   width:80vw;
+=======
+  width:85vw;
+>>>>>>> review1
   height:100vh;
 }
 
@@ -76,8 +83,12 @@ div.post{
   width: 350px;
   margin-right: 1rem;
   margin-bottom: 1rem;
+<<<<<<< HEAD
   left:400px;
   position: relative;
+=======
+  position: absolute;
+>>>>>>> review1
   z-index: 0;
 }
 
@@ -90,6 +101,10 @@ div.post header.postHeader img{
   width:13px;
   margin-right: 3px;
   
+}
+
+div.post .postHeader{
+  padding: 10px 10px 5px 10px;
 }
 
 div.post textarea{
@@ -106,10 +121,8 @@ div.post textarea:focus{
 }
 
 div.contextMenu{
-  position: fixed;
+  position: absolute;
   font-size: 0.8rem;
-  width:120px;
-  height:133px;
   border:1px solid gray;
   z-index: 100;
   background-color:white;
@@ -127,7 +140,23 @@ div.contextMenu li.contextItem{
   padding:10px;
 }
 
-div.contextMenu li.contextItem:hover{
+/* div.contextMenu li.contextItem:hover{
   background-color: #F25C5C;
   color:white;
+} */
+
+li.colorLi div{
+  width:15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+li.colorLi div:hover{
+	border:1px solid gray;
+}
+
+li.colorLi{
+  margin-top: 10px;
+  display: inline-block;
 }

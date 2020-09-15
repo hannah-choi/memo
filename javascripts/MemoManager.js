@@ -5,7 +5,7 @@ class MemoManager{
     constructor(data){
         this.data = data
         this.memoSection = document.querySelector('.memoSection')
-        this.memos = data.map(data => new Memo(data.text, data.color, data.id, false))
+        this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY, false))
         this.listRender()
         this.selected = null;
         this.shiftX = null;
@@ -55,6 +55,16 @@ class MemoManager{
     dragStart(e){
         const id = e.target.dataset.id
         e.dataTransfer.setData("text", id)
+
+        this.shiftX = e.pageX - e.target.getBoundingClientRect().left
+        this.shiftY = e.pageY - e.target.getBoundingClientRect().top
+    }
+
+
+    drop(selected, pageXValue, pageYValue){        
+        selected.style.left = pageXValue;
+        selected.style.top = pageYValue;
+    }
 
         this.shiftX = e.pageX - e.target.getBoundingClientRect().left
         this.shiftY = e.pageY - e.target.getBoundingClientRect().top
