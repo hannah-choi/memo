@@ -7,6 +7,8 @@ class MemoManager{
         this.memos = data.map(data => new Memo(data.text, data.color, data.id, false))
         this.listRender()
         this.selected = null;
+        this.shiftX = null;
+        this.shiftY = null;
     }
 
     createMemo(){
@@ -40,15 +42,34 @@ class MemoManager{
         selected.dataset.name = 'minimize';
     }
 
-    // bringFront(clickedItem){
-    //     this.selected = clickedItem; //store the previously clicked element
-    //     if(!clickedItem.style.zIndex == 10 || !clickedItem.style.zIndex){
-    //         this.selected.zIndex = 0
-    //         clickedItem.style.zIndex = 10
-    //     } else { 
-    //         this.selected.zIndex = 10
-    //         clickedItem.style.zIndex = 0 }
-    // }
+    bringFront(clickedItem){
+        if(this.selected === null)
+
+
+        this.selected = clickedItem; //store the previously clicked element
+        // if(!clickedItem.style.zIndex == 10 || !clickedItem.style.zIndex){
+        //     this.selected.zIndex = 0
+        //     clickedItem.style.zIndex = 10
+        // } else { 
+        //     this.selected.zIndex = 10
+        //     clickedItem.style.zIndex = 0 }
+    }
+
+    dragStart(e){
+        const id = e.target.dataset.id
+        e.dataTransfer.setData("text", id)
+
+        this.shiftX = e.pageX - e.target.getBoundingClientRect().left
+        this.shiftY = e.pageY - e.target.getBoundingClientRect().top
+    }
+
+
+    drop(selected, pageXValue, pageYValue){
+        
+        // localStorage.setItem('data', JSON.stringify(data.find()))
+        console.log(selected)
+        
+    }
 
     listRender(){ //데이터를 받아서 리스트를 그려주는 역할
         const memosArray = this.memos.map(memo => memo.render()).join('')
