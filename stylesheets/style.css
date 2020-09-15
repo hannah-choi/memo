@@ -143,15 +143,6 @@ li.colorLi{
   display: inline-block;
 }
 
-div.bgMenu{
-  position: absolute;
-  font-size: 0.8rem;
-  border:1px solid gray;
-  z-index: 100;
-  background-color:white;
-  transform:scale(0);
-  opacity: 0;
-}
 
 div.bgMenu li{
   padding:10px;

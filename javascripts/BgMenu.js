@@ -3,14 +3,16 @@ import ContextMenu from './ContextMenu.js'
 class BgMenu extends ContextMenu{
 
     render(){
-       let contents = '';
-       contents = `<div class = "bgMenu">
-                    <ul>
-                        <li>New memo</li>
-                        <li>Delete memo</li>
-                    </ul>
-                    </div>`
-        this.memoSection.innerHTML += contents;
+        const temp = document.createElement('div')
+        temp.innerHTML = `<div class = "contextMenu">
+                            <ul>
+                                <li>New memo</li>
+                                <li>Delete memo</li>
+                            </ul>
+                            </div>`
+        this.menu = temp.children[0]
+        this.memoSection.appendChild(this.menu)
+        
     }
 
 }

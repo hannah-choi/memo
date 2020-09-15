@@ -39,7 +39,7 @@ memoSection.addEventListener('click', ({target})=>{
                 memoApp.bringFront(clickedItem)
                 break;
             default:
-                contextMenuDiv.classList.remove('menuShow')
+                //contextMenuDiv.classList.remove('menuShow')
                 return;
         }
     })
@@ -112,6 +112,6 @@ memoSection.addEventListener('drop', (e)=>{
 })
 
 
-document.addEventListener('scroll', (e)=>{
-    contextMenuDiv.classList.remove('menuShow')
-})
+// document.addEventListener('scroll', (e)=>{
+//     contextMenuDiv.classList.remove('menuShow')
+// })

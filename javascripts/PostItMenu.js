@@ -1,6 +1,9 @@
 import ContextMenu from './ContextMenu.js'
 
 class PostItMenu extends ContextMenu{
+    // constructor(){
+    //     this.menu = menu
+    // }
 
     memoColorChange(colorName){
         this.clickedItem.classList.remove(`${this.clickedItem.dataset.color}`)
@@ -9,8 +12,8 @@ class PostItMenu extends ContextMenu{
     }
 
     render(){
-        let contents = "";
-        contents = `<div class = "contextMenu">
+        const temp = document.createElement('div')
+        temp.innerHTML = `<div class = "contextMenu">
 		<ul>
 			<li class = "contextItem">COPY</li>
 			<li class = "contextItem">COLOR
@@ -23,8 +26,9 @@ class PostItMenu extends ContextMenu{
 			</li>
 		</ul>
         </div>`
-        
-        this.memoSection.innerHTML += contents;
+
+        this.menu = temp.children[0]
+        this.memoSection.appendChild(this.menu)
 
     }
 
