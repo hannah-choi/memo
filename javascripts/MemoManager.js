@@ -4,7 +4,7 @@ class MemoManager{
     constructor(data){
         this.data = data
         this.memoSection = document.querySelector('.memoSection')
-        this.memos = data.map(data => new Memo(data.text, data.color, data.id, false))
+        this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY, false))
         this.listRender()
         this.selected = null;
         this.shiftX = null;
@@ -64,18 +64,15 @@ class MemoManager{
     }
 
 
-    drop(selected, pageXValue, pageYValue){
-        
-        // localStorage.setItem('data', JSON.stringify(data.find()))
-        console.log(selected)
-        
+    drop(selected, pageXValue, pageYValue){        
+        selected.style.left = pageXValue;
+        selected.style.top = pageYValue;
     }
 
     listRender(){ //데이터를 받아서 리스트를 그려주는 역할
         const memosArray = this.memos.map(memo => memo.render()).join('')
         this.memoSection.innerHTML = memosArray
 }
-
 
 }
 

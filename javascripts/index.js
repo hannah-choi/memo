@@ -1,10 +1,11 @@
 import MemoManager from './MemoManager.js'
 import ContextMenu from './ContextMenu.js'
+import LocalStorageClass from './LocalStorageClass.js'
 
 const data = JSON.parse(localStorage.getItem('data'))
-
 const memoApp = new MemoManager(data)
 const contextMenu = new ContextMenu()
+const localStorageClass = new LocalStorageClass()
 const contextMenuDiv = document.querySelector('.contextMenu');
 const memoSection = document.querySelector('.memoSection')
 
@@ -31,12 +32,11 @@ memoSection.addEventListener('click', ({target})=>{
                 } else if (target.tagName === "TEXTAREA" || target.tagName === "ARTICLE") {
                     clickedItem = target.parentElement.parentElement.parentElement
                 }
-                console.log(clickedItem.style.zIndex)
                 memoApp.bringFront(clickedItem)
                 break;
             default:
                 contextMenuDiv.classList.remove('menuShow')
-                return
+                return;
         }
     })
 
@@ -51,11 +51,28 @@ memoSection.addEventListener('click', ({target})=>{
     
 memoSection.addEventListener('contextmenu', (e)=>{
     e.preventDefault(); 
-    if(e.target.tagName==="SECTION"){
+    let clickedItem = ""
+    if(e.target.tagName === "HEADER"){
+        clickedItem = e.target.parentElement
+    } else if (e.target.tagName === "TEXTAREA" || e.target.tagName === "ARTICLE") {
+        clickedItem = e.target.parentElement.parentElement.parentElement
+    } else {
         return;
     }
-    contextMenu.rightButtonClick(e.clientY, e.clientX)
+
+    contextMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
 })
+
+contextMenuDiv.addEventListener('click', ({target})=>{
+    switch(target.dataset.name){
+        case "color":
+            contextMenu.memoColorChange(target.className)
+
+            break;
+    }   
+})
+
+
 
 // posts.forEach(post => {
 //     post.addEventListener('click', (e)=>{
@@ -73,13 +90,13 @@ memoSection.addEventListener('change', ({target})=>{
             data[target.dataset.id].text = target.value
             break;
     }    
-})
+}) 
 
 memoSection.addEventListener('dragstart',(e)=>{
-    if(e.target.className !== 'post'){
+    if(!e.target.className === 'post'){
         return;
     } 
-    MemoManager.dragStart(e)
+    memoApp.dragStart(e)
 })
 
 memoSection.addEventListener('dragover',(e)=>{
@@ -94,9 +111,9 @@ memoSection.addEventListener('drop', (e)=>{
     const id = e.dataTransfer.getData("text")
     let selected = document.querySelector(`[data-id="${id}"]`)    
     let pageXValue = e.pageX-200 - memoApp.shiftX + "px";
-    let pageYvalue = e.pageY - memoApp.shiftY + "px";
+    let pageYValue = e.pageY - memoApp.shiftY + "px";
 
-    memoApp.drop(selected, pageXValue, pageYvalue)
+    memoApp.drop(selected, pageXValue, pageYValue)
 })
 
 
