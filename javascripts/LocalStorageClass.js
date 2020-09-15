@@ -12,11 +12,11 @@ class LocalStorageClass{
         localStorage.setItem('data', JSON.stringify(this.data));
     }
 
-    // colorChange(color){
-    //     const findData = this.data.find(item => item.id === +selected.dataset.id);
-    //     findData.color = color;
-    //     localStorage.setItem('data', JSON.stringify(this.data));
-    // }
+    colorChange(selected, changedColor){
+        const findData = this.data.find(item => item.id === +selected.dataset.id);
+        findData.color = changedColor;
+        localStorage.setItem('data', JSON.stringify(this.data));
+    }
 
 }
 

@@ -43,16 +43,17 @@ class MemoManager{
     }
 
     bringFront(clickedItem){
-        if(this.selected === null)
-
-
-        this.selected = clickedItem; //store the previously clicked element
-        // if(!clickedItem.style.zIndex == 10 || !clickedItem.style.zIndex){
-        //     this.selected.zIndex = 0
-        //     clickedItem.style.zIndex = 10
-        // } else { 
-        //     this.selected.zIndex = 10
-        //     clickedItem.style.zIndex = 0 }
+        this.selected = clickedItem;
+        if(this.selected !== null){
+            clickedItem.style.zIndex == 10
+            this.selected.zIndex = clickedItem.style.zIndex;
+        } //store the previously clicked element
+        if(clickedItem.style.zIndex !== 10){
+            this.selected.zIndex = 0
+            clickedItem.style.zIndex = 10
+        } else { 
+            this.selected.zIndex = 10
+            clickedItem.style.zIndex = 0 }
     }
 
     dragStart(e){

@@ -5,9 +5,10 @@ import LocalStorageClass from './LocalStorageClass.js'
 const data = JSON.parse(localStorage.getItem('data'))
 const memoApp = new MemoManager(data)
 const contextMenu = new ContextMenu()
-const localStorageClass = new LocalStorageClass()
+const localStorageClass = new LocalStorageClass(data)
 const contextMenuDiv = document.querySelector('.contextMenu');
 const memoSection = document.querySelector('.memoSection')
+let rightClick = null;
 
 //const eachMemo = document.querySelectorAll('.post')
 
@@ -40,14 +41,6 @@ memoSection.addEventListener('click', ({target})=>{
         }
     })
 
-    // posts.forEach(post => {
-    //     post.addEventListener('contextmenu',(e)=>{
-    //         e.preventDefault(); 
-    //         contextMenu.style.top = `${e.clientY}px`
-    //         contextMenu.style.left = `${e.clientX}px`
-    //         contextMenu.classList.add('menuShow')
-    // })
-    // })
     
 memoSection.addEventListener('contextmenu', (e)=>{
     e.preventDefault(); 
@@ -59,7 +52,7 @@ memoSection.addEventListener('contextmenu', (e)=>{
     } else {
         return;
     }
-
+    rightClick = clickedItem;
     contextMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
 })
 
@@ -67,12 +60,10 @@ contextMenuDiv.addEventListener('click', ({target})=>{
     switch(target.dataset.name){
         case "color":
             contextMenu.memoColorChange(target.className)
-
+            localStorageClass.colorChange(rightClick, target.className)
             break;
     }   
 })
-
-
 
 // posts.forEach(post => {
 //     post.addEventListener('click', (e)=>{
@@ -114,6 +105,7 @@ memoSection.addEventListener('drop', (e)=>{
     let pageYValue = e.pageY - memoApp.shiftY + "px";
 
     memoApp.drop(selected, pageXValue, pageYValue)
+    localStorageClass.pageUpdate(selected, pageXValue, pageYValue)
 })
 
 
