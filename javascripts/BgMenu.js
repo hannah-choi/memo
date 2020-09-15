@@ -1,7 +1,6 @@
-class BgMenu{
-    constructor(memoSection){
-        this.memoSection = memoSection
-    }
+import ContextMenu from './ContextMenu.js'
+
+class BgMenu extends ContextMenu{
 
     render(){
        let contents = '';
@@ -14,15 +13,6 @@ class BgMenu{
         this.memoSection.innerHTML += contents;
     }
 
-    rightButtonClick(clickedItem, clientY, clientX){
-        if(clickedItem.className === 'memoSection'){
-            this.render()
-            const bgMenu = document.querySelector('.bgMenu');
-            bgMenu.style.top = clientY + "px";
-            bgMenu.style.left = clientX + "px";
-            bgMenu.classList.add('menuShow')
-        }
-    }
 }
 
 export default BgMenu;

@@ -1,16 +1,17 @@
 import MemoManager from './MemoManager.js'
-import ContextMenu from './ContextMenu.js'
+import ContextMenu from './PostItMenu.js'
 import LocalStorageClass from './LocalStorageClass.js'
 import BgMenu from './BgMenu.js'
+import PostItMenu from './PostItMenu.js'
 
 const memoSection = document.querySelector('.memoSection')
-const contextMenu = new ContextMenu(memoSection)
+const postItMenu = new PostItMenu(memoSection)
 const localStorageClass = new LocalStorageClass()
 const data = localStorageClass.getData()
 const memoApp = new MemoManager(data)
 const bgMenu = new BgMenu(memoSection)
 
-const contextMenuDiv = document.querySelector('.contextMenu');
+//const contextMenuDiv = document.querySelector('.contextMenu');
 let rightClick = null;
 
 
@@ -50,10 +51,10 @@ memoSection.addEventListener('contextmenu', (e)=>{
 
     if(e.target.tagName === "HEADER"){
         clickedItem = e.target.parentElement
-        contextMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
+        postItMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
     } else if (e.target.tagName === "TEXTAREA" || e.target.tagName === "ARTICLE") {
         clickedItem = e.target.parentElement.parentElement.parentElement
-        contextMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
+        postItMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
     } 
     
     else if (e.target.className = "memoSection"){
@@ -66,14 +67,14 @@ memoSection.addEventListener('contextmenu', (e)=>{
     
 })
 
-contextMenuDiv.addEventListener('click', ({target})=>{
-    switch(target.dataset.name){
-        case "color":
-            contextMenu.memoColorChange(target.className)
-            localStorageClass.colorChange(rightClick, target.className)
-            break;
-    }   
-})
+// postItMenuDiv.addEventListener('click', ({target})=>{
+//     switch(target.dataset.name){
+//         case "color":
+//             postItMenu.memoColorChange(target.className)
+//             localStorageClass.colorChange(rightClick, target.className)
+//             break;
+//     }   
+// })
 
 
 memoSection.addEventListener('change', ({target})=>{
