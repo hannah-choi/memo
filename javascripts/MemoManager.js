@@ -32,9 +32,15 @@ class MemoManager{
     }
 
     minimize(selected){
-        selected.parentElement.nextElementSibling.style.display = "none";
-        selected.src = "images/maximize.svg";
-        selected.dataset.name = 'maximize'
+        let headerText = selected.querySelector('.headerText')
+        const text = selected.querySelector('textarea').value;
+        const firstLine = text.split('\n')[0];
+        selected.children[1].style.display = "none";
+        if(text){
+            headerText.innerHTML = firstLine;
+        } 
+        selected.querySelector('.minimize').src = "images/maximize.svg";
+        selected.querySelector('.minimize').dataset.name = 'maximize'
     }
 
     maximize(selected){

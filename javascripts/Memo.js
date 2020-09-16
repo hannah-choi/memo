@@ -23,6 +23,7 @@ class Memo{
                         <img src="images/add.svg" data-name="create">
                         <img src="images/remove.svg" data-name="remove" data-id="${this.memoId}">
                         <img class="minimize" src="images/minimize.svg" data-name="minimize">
+                        <span class="headerText"></span>
                     </header>
                     <article class="postMain" data-name="post">
                         <form action="">

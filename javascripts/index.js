@@ -22,7 +22,7 @@ memoSection.addEventListener('click', ({target})=>{
                 memoApp.removeMemo(target.dataset.id)
                 break;
             case "minimize":
-                memoApp.minimize(target)
+                memoApp.minimize(target.parentElement.parentElement)
                 break;
             case "maximize":
                 memoApp.maximize(target)
@@ -47,11 +47,10 @@ memoSection.addEventListener('contextmenu', (e)=>{
         clickedItem = e.target.parentElement.parentElement.parentElement
         postItMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
     } 
-    
-    else if (e.target.className = "memoSection"){
+    else if (e.target.className === "memoSection"){
         clickedItem = e.target;
-        bgMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
-    } else{
+        bgMenu.rightButtonClick(e.clientY, e.clientX)
+    } else {
         return;
     }
 })

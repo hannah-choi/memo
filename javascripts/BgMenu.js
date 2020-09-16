@@ -2,10 +2,6 @@ import ContextMenu from './ContextMenu.js'
 
 class BgMenu extends ContextMenu{
 
-    rightButtonClick(clickedItem, clientY, clientX){
-        super.rightButtonClick(clientY, clientX)
-    }
-
     render(){
         const temp = document.createElement('div')
         temp.innerHTML = `<div class = "contextMenu">

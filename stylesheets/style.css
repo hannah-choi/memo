@@ -76,7 +76,7 @@ div.post{
   margin-right: 1rem;
   margin-bottom: 1rem;
   left:400px;
-  position: relative;
+  position: absolute;
   z-index: 0;
 }
 
