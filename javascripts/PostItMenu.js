@@ -5,11 +5,17 @@ class PostItMenu extends ContextMenu{
     //     this.menu = menu
     // }
 
+    rightButtonClick(clickedItem){ //overwriting하는것 숙제
+        this.super();
+        this.clickedItem = clickedItem;
+    }
+
     memoColorChange(colorName){
         this.clickedItem.classList.remove(`${this.clickedItem.dataset.color}`)
         this.clickedItem.classList.add(`${colorName}`)
         this.clickedItem.dataset.color = `${colorName}`
     }
+
 
     render(){
         const temp = document.createElement('div')
@@ -30,8 +36,28 @@ class PostItMenu extends ContextMenu{
         this.menu = temp.children[0]
         this.memoSection.appendChild(this.menu)
 
+        this.clickEvent()
     }
 
+    clickEvent(){
+        this.menu.addEventListener('click', ({target})=>{
+            switch(target.dataset.name){
+                case "color":
+                    this.memoColorChange(target.className)
+                    LocalStorageClass.colorChange(rightClick, target.className)
+                    break;
+            }   
+        })
+    }
+
+
+    targetConvert(target){
+        if(target.tagName === "HEADER"){
+            return target.parentElement
+        } else if (target.tagName === "TEXTAREA" || target.tagName === "ARTICLE") {
+            return target.parentElement.parentElement.parentElement
+        }
+    }
 
 }
 

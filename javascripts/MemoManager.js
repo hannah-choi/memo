@@ -65,9 +65,6 @@ class MemoManager{
         selected.style.left = pageXValue;
         selected.style.top = pageYValue;
 
-        // this.shiftX = e.pageX - e.target.getBoundingClientRect().left
-        // this.shiftY = e.pageY - e.target.getBoundingClientRect().top
-
     }
 
 

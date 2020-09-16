@@ -3,19 +3,17 @@ class ContextMenu{
         this.memoSection = memoSection
     }
 
-    rightButtonClick(clickedItem, clientY,clientX){
-        this.remove()
+    rightButtonClick(clientY,clientX){
+        ContextMenu.remove()
         this.render()
-        this.clickedItem = clickedItem
-        
         //const contextMenu = document.querySelector('.contextMenu');
         this.menu.style.top = clientY + "px";
-        this.menu.style.left = clientX + "px";
+        this.menu.style.left = clientX - 200 + "px";
         this.menu.classList.add('menuShow')
     }
 
-    remove(){
-        if(this.menu){
+    static remove(){
+        if(document.querySelector('.contextMenu')){
             document.querySelector('.contextMenu').remove();
         }
     }

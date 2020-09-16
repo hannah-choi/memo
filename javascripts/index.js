@@ -11,8 +11,6 @@ const data = localStorageClass.getData()
 const memoApp = new MemoManager(data)
 const bgMenu = new BgMenu(memoSection)
 
-//const contextMenuDiv = document.querySelector('.contextMenu');
-let rightClick = null;
 
 
 memoSection.addEventListener('click', ({target})=>{
@@ -30,16 +28,10 @@ memoSection.addEventListener('click', ({target})=>{
                 memoApp.maximize(target)
                 break;
             case "post":
-                let clickedItem ="";
-                if(target.tagName === "HEADER"){
-                    clickedItem = target.parentElement
-                } else if (target.tagName === "TEXTAREA" || target.tagName === "ARTICLE") {
-                    clickedItem = target.parentElement.parentElement.parentElement
-                }
-                memoApp.bringFront(clickedItem)
+                memoApp.bringFront(postItMenu.targetConvert(target))
                 break;
             default:
-                //contextMenuDiv.classList.remove('menuShow')
+                ContextMenu.remove()
                 return;
         }
     })
@@ -48,7 +40,6 @@ memoSection.addEventListener('click', ({target})=>{
 memoSection.addEventListener('contextmenu', (e)=>{
     e.preventDefault(); 
     let clickedItem = ""
-
     if(e.target.tagName === "HEADER"){
         clickedItem = e.target.parentElement
         postItMenu.rightButtonClick(clickedItem, e.clientY, e.clientX)
@@ -63,18 +54,7 @@ memoSection.addEventListener('contextmenu', (e)=>{
     } else{
         return;
     }
-    rightClick = clickedItem;
-    
 })
-
-// postItMenuDiv.addEventListener('click', ({target})=>{
-//     switch(target.dataset.name){
-//         case "color":
-//             postItMenu.memoColorChange(target.className)
-//             localStorageClass.colorChange(rightClick, target.className)
-//             break;
-//     }   
-// })
 
 
 memoSection.addEventListener('change', ({target})=>{
