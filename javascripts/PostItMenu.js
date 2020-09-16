@@ -5,8 +5,8 @@ class PostItMenu extends ContextMenu{
     //     this.menu = menu
     // }
 
-    rightButtonClick(clickedItem){ //overwriting하는것 숙제
-        this.super();
+    rightButtonClick(clickedItem, clientY, clientX){ //overwriting하는것 숙제
+        super.rightButtonClick(clientY, clientX);
         this.clickedItem = clickedItem;
     }
 
@@ -15,7 +15,6 @@ class PostItMenu extends ContextMenu{
         this.clickedItem.classList.add(`${colorName}`)
         this.clickedItem.dataset.color = `${colorName}`
     }
-
 
     render(){
         const temp = document.createElement('div')
@@ -35,7 +34,6 @@ class PostItMenu extends ContextMenu{
 
         this.menu = temp.children[0]
         this.memoSection.appendChild(this.menu)
-
         this.clickEvent()
     }
 
