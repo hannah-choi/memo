@@ -103,7 +103,8 @@ div.post textarea:focus{
 
 }
 
-div.contextMenu{
+div.contextMenu,
+div.bgMenu{
   position: absolute;
   font-size: 0.8rem;
   border:1px solid gray;
@@ -142,4 +143,8 @@ li.colorLi div:hover{
 li.colorLi{
   margin-top: 10px;
   display: inline-block;
+}
+
+div.bgMenu li{
+  padding:10px;
 }

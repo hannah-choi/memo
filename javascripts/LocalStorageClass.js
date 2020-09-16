@@ -1,7 +1,11 @@
 
 class LocalStorageClass{
-    constructor(data){
-        this.data = data;
+    constructor(){
+        this.getData()
+    }
+
+    getData(){
+        return JSON.parse(localStorage.getItem('data'))
     }
 
     pageUpdate(selected, pageXValue, pageYValue){
