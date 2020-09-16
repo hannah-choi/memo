@@ -1,4 +1,6 @@
 import ContextMenu from './ContextMenu.js'
+import LocalStorageClass from './LocalStorageClass.js'
+
 
 class PostItMenu extends ContextMenu{
     // constructor(){
@@ -42,7 +44,7 @@ class PostItMenu extends ContextMenu{
             switch(target.dataset.name){
                 case "color":
                     this.memoColorChange(target.className)
-                    LocalStorageClass.colorChange(rightClick, target.className)
+                    LocalStorageClass.colorChange(this.clickedItem, target.className)
                     break;
             }   
         })

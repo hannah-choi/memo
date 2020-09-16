@@ -1,14 +1,17 @@
 
 class LocalStorageClass{
     constructor(){
-        this.data = this.getData();
+        this.getData();
     }
 
+    static data;
+    
     getData(){
         const data = localStorage.getItem('data')
         if (!data){
             return [];
         }
+        LocalStorageClass.data = JSON.parse(data)
         return JSON.parse(data)
     }
 
