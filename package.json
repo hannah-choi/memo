@@ -1,0 +1,19 @@
+{
+  "name": "memo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannah-developer/memo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hannah-developer/memo/issues"
+  },
+  "homepage": "https://github.com/hannah-developer/memo#readme"
+}
