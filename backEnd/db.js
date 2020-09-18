@@ -1,16 +1,16 @@
 var mysql      = require('mysql');
-var connection = mysql.createConnection({
+var db = mysql.createConnection({
   database : 'memosystem',
   host     : 'localhost',
   user     : 'root',
   password : '1111'
 });
 
-connection.connect();
+db.connect();
 
-connection.query(`SELECT * FROM MEMO`, (err,rows)=>{
-    if (err) throw err;
-    console.log(rows)
-})
+// connection.query(`SELECT * FROM MEMO`, (err,rows)=>{
+//     if (err) throw err;
+//     console.log(rows)
+// })
 
-connection.end();
+db.end();
