@@ -4,16 +4,17 @@ import Memo from './Memo.js'
 class MemoManager{
     constructor(data){
         this.data = data
+        // console.log(this.data)
         this.memoSection = document.querySelector('.memoSection')
-        this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY, false))
+        this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY))
         this.listRender()
         this.selected = null;
         this.shiftX = null;
         this.shiftY = null;
     }
 
-    createMemo(){
-        const memo = new Memo("", "brightred", 3)
+    createMemo(dataId, pageX, pageY){
+        const memo = new Memo("", "brightred", dataId, pageX, pageY)
         this.memos.push(memo)
         this.listRender()
     }

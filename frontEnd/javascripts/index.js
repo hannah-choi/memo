@@ -12,23 +12,22 @@ const memoApp = new MemoManager(data)
 const bgMenu = new BgMenu(memoSection)
 
 
-
-memoSection.addEventListener('click', ({target})=>{
-        switch(target.dataset.name){
+memoSection.addEventListener('click', (e)=>{
+        switch(e.target.dataset.name){
             case "create":
-                memoApp.createMemo()
+                memoApp.createMemo(e.target.dataset.id+1, e.clientY, e.clientX)
                 break;
             case "remove":
-                memoApp.removeMemo(target.dataset.id)
+                memoApp.removeMemo(e.target.dataset.id)
                 break;
             case "minimize":
-                memoApp.minimize(target.parentElement.parentElement)
+                memoApp.minimize(e.target.parentElement.parentElement)
                 break;
             case "maximize":
-                memoApp.maximize(target)
+                memoApp.maximize(e.target)
                 break;
             case "post":
-                memoApp.bringFront(postItMenu.targetConvert(target))
+                memoApp.bringFront(postItMenu.targetConvert(e.target))
                 break;
             default:
                 ContextMenu.remove()
