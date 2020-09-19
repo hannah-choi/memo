@@ -1,4 +1,6 @@
-class BgMenu{
+import ContextMenu from './ContextMenu.js'
+
+class BgMenu extends ContextMenu {
     constructor(){
         this.clickedItem = null;
     }

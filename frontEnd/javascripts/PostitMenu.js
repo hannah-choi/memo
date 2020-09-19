@@ -1,6 +1,9 @@
-class ContextMenu{
-    constructor(){
-        this.clickedItem = null;
+import ContextMenu from './ContextMenu.js'
+
+class PostitMenu extends ContextMenu{
+        
+    render(){
+
     }
 
     memoColorChange(colorName){
@@ -19,4 +22,4 @@ class ContextMenu{
 
 }
 
-export default ContextMenu;
+export default PostitMenu;

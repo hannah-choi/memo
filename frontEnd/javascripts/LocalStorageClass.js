@@ -5,7 +5,11 @@ class LocalStorageClass{
     }
 
     getData(){
-        return JSON.parse(localStorage.getItem('data'))
+        const localStorageData = localStorage.getItem('data')
+        if(!localStorageData){
+           return ([])
+        }
+        return JSON.parse(localStorageData)
     }
 
     pageUpdate(selected, pageXValue, pageYValue){
