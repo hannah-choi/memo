@@ -17,7 +17,11 @@ class Login{
             if(this.selectedIndex === -1){
                 alert(`there's no such username`)
             } else {
-                if this.password === this.users[this.selectedIndex].password 
+                if(this.password === this.users[this.selectedIndex].password)
+                    alert('successfully logged in ')
+                else{
+                    alert('wrong password')
+                } 
             }
         }
 
