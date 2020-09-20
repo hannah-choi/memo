@@ -3,6 +3,7 @@ import ContextMenu from './PostItMenu.js'
 import LocalStorageClass from './LocalStorageClass.js'
 import BgMenu from './BgMenu.js'
 import PostItMenu from './PostItMenu.js'
+import Login from './Login.js'
 
 const memoSection = document.querySelector('.memoSection')
 const postItMenu = new PostItMenu(memoSection)
@@ -10,6 +11,28 @@ const localStorageClass = new LocalStorageClass()
 const data = localStorageClass.getData()
 const memoApp = new MemoManager(data)
 const bgMenu = new BgMenu(memoSection)
+
+const users = [
+    {
+        userid:1,
+        username: "aaa",
+        password: "123"
+    },
+
+    {
+        userid:2,
+        username: "bbb",
+        password: "456"
+    }, 
+
+    {
+        userid:3,
+        username: "ccc",
+        password: "789"
+    },
+
+
+]
 
 
 memoSection.addEventListener('click', (e)=>{
