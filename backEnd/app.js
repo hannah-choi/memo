@@ -33,7 +33,7 @@ app.post('/post', (req, res) => {
 })
 
 app.get('/post/color', (req,res)=>{
-    db.query(`UPDATE MEMO SET COLOR = ${req.query.color} WHERE ID = ${req.query.id}`, (err,rows)=>{
+    db.query(`UPDATE MEMO SET COLOR = '${req.query.color}' WHERE ID = ${req.query.id}`, (err,rows)=>{
         if (err) throw err;
         res.redirect('/post')
     })

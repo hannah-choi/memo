@@ -1,10 +1,9 @@
-
 class FetchClass{
     constructor(){
-        //this.getData();
+        //this.data = null;
     }
 
-    //static data;
+    static data;
     
     getData(listRender){
 
@@ -18,7 +17,10 @@ class FetchClass{
             }
             )
             .then(res => res.json())
-            .then(result => listRender(result))
+            .then(result => {
+                listRender(result);
+                FetchClass.data = result;
+            })
             
         // const data = localStorage.getItem('data')
         // if (!data){
@@ -27,7 +29,6 @@ class FetchClass{
         // LocalStorageClass.data = JSON.parse(data)
         // return JSON.parse(data)
     }
-
 
 
     pageUpdate(selected, pageXValue, pageYValue){
@@ -41,7 +42,12 @@ class FetchClass{
     static colorChange(selected, changedColor){
         const findData = this.data.find(item => item.id === +selected.dataset.id);
         findData.color = changedColor;
-        localStorage.setItem('data', JSON.stringify(this.data));
+
+        fetch(`http://localhost:8440/post/color?id=${findData.id}&color=${changedColor}`)
+            .then(res => res.json())
+            .then(result => listRender(result))
+
+        //localStorage.setItem('data', JSON.stringify(this.data));
     }
 
 }

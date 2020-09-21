@@ -69,7 +69,6 @@ class MemoManager{
     drop(selected, pageXValue, pageYValue){        
         selected.style.left = pageXValue;
         selected.style.top = pageYValue;
-
     }
 
 
@@ -80,7 +79,7 @@ class MemoManager{
             }
     
 
-            
+
 
             
     listRender = (data) => { //데이터를 받아서 리스트를 그려주는 역할
