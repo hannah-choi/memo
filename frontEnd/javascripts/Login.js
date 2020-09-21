@@ -8,7 +8,7 @@ class Login{
         this.username = this.loginDiv.querySelector('#username').value;
         this.password = this.loginDiv.querySelector('#password').value;
         this.userid = this.loginDiv.querySelector('#userid').value;
-        this.selectedIndex = null
+        this.selectedIndex = null;
     }
 
     loginCheck(){

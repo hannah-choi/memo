@@ -1,19 +1,18 @@
-import db from './db.js'
-
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 8440
+const db = require('./db.js');
 
 // app.get('/', (req, res) => {
 //     res.sendStatus(200)
 // })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.use(express.urlencoded({ extended: false }))
+
+app.use(express.static('../frontEnd'));
+
 
 app.get('/post', (req, res) => {
-    if (err) throw err;
     db.query(`SELECT * FROM MEMO`, (err,rows)=>{
         res.send(rows)
     })
@@ -57,3 +56,7 @@ app.delete('/post', (req, res)=>{
         res.redirect('/post')
     })
 })
+
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+  })

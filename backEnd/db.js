@@ -8,9 +8,4 @@ var db = mysql.createConnection({
 
 db.connect();
 
-// connection.query(`SELECT * FROM MEMO`, (err,rows)=>{
-//     if (err) throw err;
-//     console.log(rows)
-// })
-
-db.end();
+module.exports = db;

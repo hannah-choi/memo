@@ -1,13 +1,11 @@
 import Memo from './Memo.js'
 
-
 class MemoManager{
-    constructor(data){
-        this.data = data
+    constructor(){
+        //this.listRender()
         // console.log(this.data)
         this.memoSection = document.querySelector('.memoSection')
-        this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY))
-        this.listRender()
+        this.memos = null;
         this.selected = null;
         this.shiftX = null;
         this.shiftY = null;
@@ -81,7 +79,12 @@ class MemoManager{
             selected.style.top = pageYvalue
             }
     
-    listRender(){ //데이터를 받아서 리스트를 그려주는 역할
+
+            
+
+            
+    listRender = (data) => { //데이터를 받아서 리스트를 그려주는 역할
+        this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY))
         const memosArray = this.memos.map(memo => memo.render()).join('')
         this.memoSection.innerHTML = memosArray
 }
