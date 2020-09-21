@@ -3,10 +3,6 @@ const app = express()
 const port = 8440
 const db = require('./db.js');
 
-// app.get('/', (req, res) => {
-//     res.sendStatus(200)
-// })
-
 app.use(express.urlencoded({ extended: false }))
 
 app.use(express.static('../frontEnd'));
@@ -54,13 +50,18 @@ app.put('/post', (req, res) => {
     })
 })
 
-app.delete('/post', (req, res)=>{
-    const postid = req.query.id;
-    db.query(`DELETE FROM MEMO WHERE ID = ${postid}`, (err, rows)=>{
+app.get('/post/delete', (req, res)=>{
+    console.log(req.query.id)
+    db.query(`DELETE FROM MEMO WHERE ID = ${req.query.id}`, (err, rows)=>{
         if (err) throw err;
         res.redirect('/post')
     })
 })
+
+// app.get('/user', (req,res)=>{
+    
+// })
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

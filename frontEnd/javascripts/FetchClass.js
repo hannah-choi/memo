@@ -6,7 +6,6 @@ class FetchClass{
     static data;
     
     getData(listRender){
-
         fetch('http://localhost:8440/post',
             {
                 method:'get',
@@ -53,6 +52,31 @@ x
 
         //localStorage.setItem('data', JSON.stringify(this.data));
     }
+
+
+    removeMemo(id, listRender){
+        fetch(`http://localhost:8440/post/delete?id=${id}`)
+        .then(res => res.json())
+        .then(result => listRender(result))
+    }
+
+    // getUser(){
+
+    //     fetch(`http://localhost:8440/user`,
+    //     {
+    //         method:'get',
+    //         headers:{
+    //             "Accept": "application/json",
+    //             "Content-type": "application/json; charset = UTF-8"
+    //         }
+    //     }
+    //     )
+    //     .then(res => res.json())
+    //     .then(result => console.log(result))
+
+    // }
+
+
 }
 
 

@@ -1,6 +1,3 @@
-
-
-
 class Login{
     constructor(users){
         this.users = users

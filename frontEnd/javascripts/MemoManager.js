@@ -20,7 +20,7 @@ class MemoManager{
     removeMemo(selected){
         const selectedId = this.memos.findIndex(data => data.id === +selected)
         this.memos.splice(selectedId, 1)
-        this.listRender()
+        //this.listRender()
     }
 
     updateMemo(selected, newValue){

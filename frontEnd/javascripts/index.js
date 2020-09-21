@@ -5,9 +5,8 @@ import BgMenu from './BgMenu.js'
 import PostItMenu from './PostItMenu.js'
 import Login from './Login.js'
 
-
 const memoSection = document.querySelector('.memoSection')
-
+const body = document.querySelector('body')
 
 const memoApp = new MemoManager()
 const fetchClass = new FetchClass()
@@ -39,14 +38,17 @@ const users = [
 
 ]
 
+const login = new Login(users)
 
-memoSection.addEventListener('click', (e)=>{
+
+body.addEventListener('click', (e)=>{
         switch(e.target.dataset.name){
             case "create":
                 memoApp.createMemo(e.target.dataset.id+1, e.clientY, e.clientX)
                 break;
             case "remove":
                 memoApp.removeMemo(e.target.dataset.id)
+                fetchClass.removeMemo(+e.target.dataset.id, memoApp.listRender)
                 break;
             case "minimize":
                 memoApp.minimize(e.target.parentElement.parentElement)
@@ -56,6 +58,9 @@ memoSection.addEventListener('click', (e)=>{
                 break;
             case "post":
                 memoApp.bringFront(postItMenu.targetConvert(e.target))
+                break;
+            case "login":
+                login.loginCheck()
                 break;
             default:
                 ContextMenu.remove()
