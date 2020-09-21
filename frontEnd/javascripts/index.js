@@ -1,21 +1,21 @@
 import FetchClass from './FetchClass.js'
 import MemoManager from './MemoManager.js'
-import ContextMenu from './PostItMenu.js'
-//import LocalStorageClass from './LocalStorageClass.js'
+import ContextMenu from './ContextMenu.js'
 import BgMenu from './BgMenu.js'
 import PostItMenu from './PostItMenu.js'
 import Login from './Login.js'
 
 
 const memoSection = document.querySelector('.memoSection')
-const postItMenu = new PostItMenu(memoSection)
 
 
 const memoApp = new MemoManager()
 const fetchClass = new FetchClass()
 fetchClass.getData(memoApp.listRender)
 
-const bgMenu = new BgMenu(memoSection)
+const postItMenu = new PostItMenu(memoApp.listRender, memoSection)
+
+const bgMenu = new BgMenu(memoApp.listRender, memoSection)
 
 const users = [
     {
@@ -114,7 +114,7 @@ memoSection.addEventListener('drop', (e)=>{
     let pageYValue = e.pageY - memoApp.shiftY + "px";
 
     memoApp.drop(selected, pageXValue, pageYValue)
-    //localStorageClass.pageUpdate(selected, pageXValue, pageYValue)
+    fetchClass.pageUpdate(selected, pageXValue, pageYValue, memoApp.listRender)
 })
 
 

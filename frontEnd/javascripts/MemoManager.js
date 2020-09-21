@@ -54,7 +54,6 @@ class MemoManager{
         }
         this.selected = clickedItem; //store the previously clicked element
         this.selected.style.zIndex = 10;
-        console.log(this.selected)
     }
 
     dragStart(e){

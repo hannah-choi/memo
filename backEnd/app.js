@@ -19,7 +19,6 @@ app.get('/post', (req, res) => {
 })
 
 app.post('/post', (req, res) => {
-    console.log(req.body)
     db.query(`INSERT INTO MEMO(COLOR, PAGEX, PAGEY, TEXT) VALUES(${req.body.color}, ${req.body.pageX}, ${req.body.pageY}, ${req.body.text}`, (err, rows)=>{
         if (err) throw err;
         res.send({  id:rows.insertId,
@@ -39,6 +38,12 @@ app.get('/post/color', (req,res)=>{
     })
 })
 
+app.get('/post/position', (req,res)=>{
+    db.query(`UPDATE MEMO SET pageX = '${req.query.pageX}', pageY = '${req.query.pageY}' WHERE ID = ${req.query.id}`, (err,rows)=>{
+        if (err) throw err;
+        res.redirect('/post')
+    })
+})
 
 app.put('/post', (req, res) => {
     const text = req.body.text;

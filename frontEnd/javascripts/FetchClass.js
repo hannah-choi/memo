@@ -31,15 +31,19 @@ class FetchClass{
     }
 
 
-    pageUpdate(selected, pageXValue, pageYValue){
-        const findData = this.data.find(item => item.id === +selected.dataset.id)
+    pageUpdate(selected, pageXValue, pageYValue, listRender){
+        const findData = FetchClass.data.find(item => item.id === +selected.dataset.id)
         findData.pageX = pageXValue;
         findData.pageY = pageYValue;
 
-        localStorage.setItem('data', JSON.stringify(this.data));
-    }
+        fetch(`http://localhost:8440/post/position?id=${+selected.dataset.id}&pageX=${pageXValue.slice(0,-2)}&pageY=${pageYValue.slice(0,-2)}`)
+            .then(res => res.json())
+            .then(result => listRender(result))
 
-    static colorChange(selected, changedColor){
+        //localStorage.setItem('data', JSON.stringify(this.data));
+    }
+x
+    static colorChange(selected, changedColor, listRender){
         const findData = this.data.find(item => item.id === +selected.dataset.id);
         findData.color = changedColor;
 
@@ -49,7 +53,6 @@ class FetchClass{
 
         //localStorage.setItem('data', JSON.stringify(this.data));
     }
-
 }
 
 

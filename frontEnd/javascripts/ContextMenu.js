@@ -1,6 +1,7 @@
 class ContextMenu{
-    constructor(memoSection){
-        this.memoSection = memoSection
+    constructor(listRender, memoSection){
+        this.listRender = listRender;
+        this.memoSection = memoSection;
     }
 
     rightButtonClick(clientY,clientX){
