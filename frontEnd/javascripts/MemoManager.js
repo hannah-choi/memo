@@ -12,24 +12,24 @@ class MemoManager{
     }
 
     removeMemo(selected){
-        const selectedId = this.memos.findIndex(data => data.id === +selected)
-        this.memos.splice(selectedId, 1)
+        const selectedId = this.memos.findIndex(data => data.id === +selected);
+        this.memos.splice(selectedId, 1);
         //this.listRender()
     }
 
     deleteAllMemo(){
-        this.memos.splice(0)
+        this.memos.splice(0);
     }
 
     updateMemo(selected, newValue){
-        const selectedId = this.memos.findIndex(data => data.memoId === +selected)
-        this.memos[selectedId].memoContents = newValue
+        const selectedId = this.memos.findIndex(data => data.memoId === +selected);
+        this.memos[selectedId].memoContents = newValue;
         //console.log(this.memos[selectedId].memoContents)
         this.listRender()
     }
 
     minimize(selected){
-        let headerText = selected.querySelector('.headerText')
+        let headerText = selected.querySelector('.headerText');
         const text = selected.querySelector('textarea').value;
         const firstLine = text.split('\n')[0];
         selected.children[1].style.display = "none";
@@ -37,7 +37,7 @@ class MemoManager{
             headerText.innerHTML = firstLine;
         } 
         selected.querySelector('.minimize').src = "images/maximize.svg";
-        selected.querySelector('.minimize').dataset.name = 'maximize'
+        selected.querySelector('.minimize').dataset.name = 'maximize';
     }
 
     maximize(selected){
@@ -55,10 +55,10 @@ class MemoManager{
     }
 
     dragStart(e){
-        const id = e.target.dataset.id
-        e.dataTransfer.setData("text", id)
-        this.shiftX = e.pageX - e.target.getBoundingClientRect().left
-        this.shiftY = e.pageY - e.target.getBoundingClientRect().top
+        const id = e.target.dataset.id;
+        e.dataTransfer.setData("text", id);
+        this.shiftX = e.pageX - e.target.getBoundingClientRect().left;
+        this.shiftY = e.pageY - e.target.getBoundingClientRect().top;
     }
 
     drop(selected, pageXValue, pageYValue){        
@@ -67,20 +67,19 @@ class MemoManager{
     }
 
     htmlPositionUpdate(selected, pageXValue, pageYvalue){
-            selected.style.left = pageXValue
-            selected.style.top = pageYvalue
-            }
+        selected.style.left = pageXValue;
+        selected.style.top = pageYvalue;
+    }
     
     listRender = (data) => { //데이터를 받아서 리스트를 그려주는 역할
-            if(!Array.isArray){
-                const memo = new Memo("", "lightblue", data.id, data.pageX, data.pageY)
-                this.memos.push(memo)
-            }
-            this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY))
-            const memosArray = this.memos.map(memo => memo.render()).join('')
-            this.memoSection.innerHTML = memosArray
-        //console.log(data.text, data.color, data.id, data.pageX, data.pageY)
-}
+        if(!Array.isArray){
+            const memo = new Memo("", "lightblue", data.id, data.pageX, data.pageY);
+            this.memos.push(memo);
+        }
+        this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
+        const memosArray = this.memos.map(memo => memo.render()).join('');
+        this.memoSection.innerHTML = memosArray;
+    }
 }
 
 

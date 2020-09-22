@@ -32,41 +32,38 @@ const users = [
         username: "ccc",
         password: "789"
     },
-
-
 ]
 
 const login = new Login(users)
 
-
 body.addEventListener('click', (e)=>{
-        switch(e.target.dataset.name){
-            case "create":
-                fetchClass.createMemo(e.clientX, e.clientY, memoApp.listRender)
-                break;
-            case "deleteAll":
-                memoApp.deleteAllMemo();
-                fetchClass.deleteAllMemo(memoApp.listRender);
-                break;
-            case "remove":
-                memoApp.removeMemo(e.target.dataset.id)
-                fetchClass.removeMemo(+e.target.dataset.id, memoApp.listRender)
-                break;
-            case "minimize":
-                memoApp.minimize(e.target.parentElement.parentElement)
-                break;
-            case "maximize":
-                memoApp.maximize(e.target)
-                break;
-            case "post":
-                memoApp.bringFront(postItMenu.targetConvert(e.target))
-                break;
-            case "login":
-                login.loginCheck()
-                break;
-            default:
-                ContextMenu.remove()
-                return;
+    switch(e.target.dataset.name){
+        case "create":
+            fetchClass.createMemo(e.clientX, e.clientY, memoApp.listRender)
+            break;
+        case "deleteAll":
+            memoApp.deleteAllMemo();
+            fetchClass.deleteAllMemo(memoApp.listRender);
+            break;
+        case "remove":
+            memoApp.removeMemo(e.target.dataset.id)
+            fetchClass.removeMemo(+e.target.dataset.id, memoApp.listRender)
+            break;
+        case "minimize":
+            memoApp.minimize(e.target.parentElement.parentElement)
+            break;
+        case "maximize":
+            memoApp.maximize(e.target)
+            break;
+        case "post":
+            memoApp.bringFront(postItMenu.targetConvert(e.target))
+            break;
+        case "login":
+            login.loginCheck()
+            break;
+        default:
+            ContextMenu.remove()
+            return;
         }
     })
 
@@ -88,7 +85,6 @@ memoSection.addEventListener('contextmenu', (e)=>{
         return;
     }
 })
-
 
 memoSection.addEventListener('change', ({target})=>{
     switch(target.tagName){
@@ -116,18 +112,12 @@ memoSection.addEventListener('dragover',(e)=>{
 memoSection.addEventListener('drop', (e)=>{
     e.preventDefault();
     const id = e.dataTransfer.getData("text")
-    let selected = document.querySelector(`[data-id="${id}"]`)    
-    let pageXValue = e.pageX-200 - memoApp.shiftX + "px";
-    let pageYValue = e.pageY - memoApp.shiftY + "px";
-
+    const selected = document.querySelector(`[data-id="${id}"]`)    
+    const pageXValue = e.pageX-200 - memoApp.shiftX + "px";
+    const pageYValue = e.pageY - memoApp.shiftY + "px";
     memoApp.drop(selected, pageXValue, pageYValue)
     fetchClass.pageUpdate(selected, pageXValue, pageYValue, memoApp.listRender)
 })
-
-
-// document.addEventListener('scroll', (e)=>{
-//     contextMenuDiv.classList.remove('menuShow')
-// })
 
 filterSection.addEventListener('click', (e)=>{
     if(e.target.tagName === 'SECTION'){
