@@ -21,10 +21,7 @@ class Login{
         } else {
             alert('type something')
         }
-
     }
-
-
 }
 
 export default Login;

@@ -7,15 +7,12 @@ import Login from './Login.js'
 
 const memoSection = document.querySelector('.memoSection')
 const body = document.querySelector('body')
-
 const memoApp = new MemoManager()
 const fetchClass = new FetchClass()
 fetchClass.getData(memoApp.listRender)
-
 const postItMenu = new PostItMenu(memoApp.listRender, memoSection)
-
 const bgMenu = new BgMenu(memoApp.listRender, memoSection)
-
+const filterSection = document.querySelector('.memoList')
 
 const users = [
     {
@@ -131,3 +128,12 @@ memoSection.addEventListener('drop', (e)=>{
 // document.addEventListener('scroll', (e)=>{
 //     contextMenuDiv.classList.remove('menuShow')
 // })
+
+filterSection.addEventListener('click', (e)=>{
+    if(e.target.tagName === 'SECTION'){
+        return;
+    } else if (e.target.dataset.name === 'all'){
+        fetchClass.getData(memoApp.listRender)
+    } else {    
+        fetchClass.colorFilter(e.target.dataset.name, memoApp.listRender)}
+})

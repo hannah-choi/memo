@@ -68,9 +68,12 @@ app.delete('/post/all', (req, res)=>{
 })
 
 
-// app.get('/user', (req,res)=>{
-    
-// })
+app.get('/post/filter', (req,res)=>{
+    db.query(`SELECT * FROM MEMO WHERE COLOR = '${req.query.color}'`, (err,rows)=>{
+        if (err) throw err;
+        res.send(rows)
+    })
+})
 
 
 app.listen(port, () => {

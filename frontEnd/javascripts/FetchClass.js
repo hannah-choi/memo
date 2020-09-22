@@ -83,6 +83,17 @@ x
         .then(result => listRender(result))
     }
 
+
+    colorFilter(color, listRender){
+        fetch(`http://localhost:8440/post/filter?color=${color}`)
+        .then(res => res.json())
+        .then(result => {
+            listRender(result);
+            FetchClass.data = result;
+        })
+    }
+
+
     // getUser(){
 
     //     fetch(`http://localhost:8440/user`,
