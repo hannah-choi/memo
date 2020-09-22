@@ -11,11 +11,6 @@ class MemoManager{
         this.shiftY = null;
     }
 
-    // createMemo(data){
-    //     const memo = new Memo("", "lightblue", data.id, data.pageX, data.pageY)
-    //     this.memos.push(memo)
-    // }
-
     removeMemo(selected){
         const selectedId = this.memos.findIndex(data => data.id === +selected)
         this.memos.splice(selectedId, 1)
@@ -62,11 +57,9 @@ class MemoManager{
     dragStart(e){
         const id = e.target.dataset.id
         e.dataTransfer.setData("text", id)
-
         this.shiftX = e.pageX - e.target.getBoundingClientRect().left
         this.shiftY = e.pageY - e.target.getBoundingClientRect().top
     }
-
 
     drop(selected, pageXValue, pageYValue){        
         selected.style.left = pageXValue;
@@ -79,18 +72,15 @@ class MemoManager{
             }
     
     listRender = (data) => { //데이터를 받아서 리스트를 그려주는 역할
-
             if(!Array.isArray){
                 const memo = new Memo("", "lightblue", data.id, data.pageX, data.pageY)
                 this.memos.push(memo)
             }
-
             this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY))
             const memosArray = this.memos.map(memo => memo.render()).join('')
             this.memoSection.innerHTML = memosArray
         //console.log(data.text, data.color, data.id, data.pageX, data.pageY)
 }
-
 }
 
 

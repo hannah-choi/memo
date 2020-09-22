@@ -53,7 +53,6 @@ app.put('/post', (req, res) => {
 })
 
 app.get('/post/delete', (req, res)=>{
-    console.log(req.query.id)
     db.query(`DELETE FROM MEMO WHERE ID = ${req.query.id}`, (err, rows)=>{
         if (err) throw err;
         res.redirect('/post')
