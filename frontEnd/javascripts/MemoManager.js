@@ -11,16 +11,19 @@ class MemoManager{
         this.shiftY = null;
     }
 
-    createMemo(dataId, pageX, pageY){
-        const memo = new Memo("", "brightred", dataId, pageX, pageY)
-        this.memos.push(memo)
-        this.listRender()
-    }
+    // createMemo(data){
+    //     const memo = new Memo("", "lightblue", data.id, data.pageX, data.pageY)
+    //     this.memos.push(memo)
+    // }
 
     removeMemo(selected){
         const selectedId = this.memos.findIndex(data => data.id === +selected)
         this.memos.splice(selectedId, 1)
         //this.listRender()
+    }
+
+    deleteAllMemo(){
+        this.memos.splice(0)
     }
 
     updateMemo(selected, newValue){
@@ -70,21 +73,22 @@ class MemoManager{
         selected.style.top = pageYValue;
     }
 
-
-
     htmlPositionUpdate(selected, pageXValue, pageYvalue){
             selected.style.left = pageXValue
             selected.style.top = pageYvalue
             }
     
-
-
-
-            
     listRender = (data) => { //데이터를 받아서 리스트를 그려주는 역할
-        this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY))
-        const memosArray = this.memos.map(memo => memo.render()).join('')
-        this.memoSection.innerHTML = memosArray
+
+            if(!Array.isArray){
+                const memo = new Memo("", "lightblue", data.id, data.pageX, data.pageY)
+                this.memos.push(memo)
+            }
+
+            this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY))
+            const memosArray = this.memos.map(memo => memo.render()).join('')
+            this.memoSection.innerHTML = memosArray
+        //console.log(data.text, data.color, data.id, data.pageX, data.pageY)
 }
 
 }

@@ -2,8 +2,10 @@ const express = require('express')
 const app = express()
 const port = 8440
 const db = require('./db.js');
+let bodyParser = require('body-parser');
 
 app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.json());
 
 app.use(express.static('../frontEnd'));
 
@@ -14,15 +16,15 @@ app.get('/post', (req, res) => {
     })
 })
 
-app.post('/post', (req, res) => {
-    db.query(`INSERT INTO MEMO(COLOR, PAGEX, PAGEY, TEXT) VALUES(${req.body.color}, ${req.body.pageX}, ${req.body.pageY}, ${req.body.text}`, (err, rows)=>{
+app.post('/post/create', (req, res) => {
+    db.query(`INSERT INTO MEMO(COLOR, PAGEX, PAGEY) VALUES('lightblue', '${req.body.pageX}', '${req.body.pageY}')`, (err, rows)=>{
         if (err) throw err;
-        res.send({  id:rows.insertId,
-                    text:req.body.text,
-                    color:req.body.color,
-                    text:req.body.text,
+        res.send({ 
+                    text:"",
+                    color:'lightblue',
+                    id:rows.insertId,
                     pageX:req.body.pageX,
-                    pageY:req.body.pageY
+                    pageY:req.body.pageY                
           })
     })
 })
@@ -57,6 +59,14 @@ app.get('/post/delete', (req, res)=>{
         res.redirect('/post')
     })
 })
+
+app.delete('/post/all', (req, res)=>{
+    db.query(`DELETE FROM MEMO`, (err, rows)=>{
+        if (err) throw err;
+        res.redirect('/post')
+    })
+})
+
 
 // app.get('/user', (req,res)=>{
     

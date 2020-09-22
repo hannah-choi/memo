@@ -21,4 +21,4 @@ class ContextMenu{
 
 }
 
-export default ContextMenu
+export default ContextMenu;

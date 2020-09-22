@@ -16,6 +16,7 @@ const postItMenu = new PostItMenu(memoApp.listRender, memoSection)
 
 const bgMenu = new BgMenu(memoApp.listRender, memoSection)
 
+
 const users = [
     {
         userid:1,
@@ -44,7 +45,11 @@ const login = new Login(users)
 body.addEventListener('click', (e)=>{
         switch(e.target.dataset.name){
             case "create":
-                memoApp.createMemo(e.target.dataset.id+1, e.clientY, e.clientX)
+                fetchClass.createMemo(e.clientX, e.clientY, memoApp.listRender)
+                break;
+            case "deleteAll":
+                memoApp.deleteAllMemo();
+                fetchClass.deleteAllMemo(memoApp.listRender);
                 break;
             case "remove":
                 memoApp.removeMemo(e.target.dataset.id)

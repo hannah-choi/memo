@@ -1,3 +1,5 @@
+//import PostItMenu from "./PostItMenu";
+
 class FetchClass{
     constructor(){
         //this.data = null;
@@ -56,6 +58,27 @@ x
 
     removeMemo(id, listRender){
         fetch(`http://localhost:8440/post/delete?id=${id}`)
+        .then(res => res.json())
+        .then(result => listRender(result))
+    }
+
+    createMemo(x, y, listRender){
+        fetch(`http://localhost:8440/post/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({pageX: `${x}`, pageY: `${y}`})
+            })
+        .then(res => res.json())
+        .then(result => listRender(result))
+    }
+
+    deleteAllMemo(listRender){
+        fetch(`http://localhost:8440/post/all`, 
+        {
+            method:'DELETE'
+        })
         .then(res => res.json())
         .then(result => listRender(result))
     }

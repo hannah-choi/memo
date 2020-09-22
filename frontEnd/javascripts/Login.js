@@ -2,26 +2,25 @@ class Login{
     constructor(users){
         this.users = users
         this.loginDiv = document.querySelector('.login')
-        this.username = this.loginDiv.querySelector('#username').value;
-        this.password = this.loginDiv.querySelector('#password').value;
-        this.userid = this.loginDiv.querySelector('#userid').value;
+        this.username = document.getElementById('username')
+        this.password = document.getElementById('password')
+        this.userid = document.getElementById('userid')
         this.selectedIndex = null;
     }
 
     loginCheck(){
-        if(this.username){
-            this.selectedIndex = this.users.findIndex(user=> user.username === this.username)
-            if(this.selectedIndex === -1){
-                alert(`there's no such username`)
-            } else {
-                if(this.password === this.users[this.selectedIndex].password)
-                    alert('successfully logged in ')
-                else{
-                    alert('wrong password')
-                } 
+        if(this.username.value && this.password.value){
+            for(let i = 0; i<this.users.length; i++){
+                if(this.username.value === this.users[i].username &&
+                    this.password.value === this.users[i].password){
+                        alert(`Successfully logged in`)
+                        return;
+                    }   
             }
+            alert('invalid username or password')
+        } else {
+            alert('type something')
         }
-
 
     }
 
