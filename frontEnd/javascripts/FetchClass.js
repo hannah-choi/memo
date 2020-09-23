@@ -72,21 +72,20 @@ class FetchClass{
             FetchClass.data = result;
         })
     }
-    // getUser(){
 
-    //     fetch(`http://localhost:8440/user`,
-    //     {
-    //         method:'get',
-    //         headers:{
-    //             "Accept": "application/json",
-    //             "Content-type": "application/json; charset = UTF-8"
-    //         }
-    //     }
-    //     )
-    //     .then(res => res.json())
-    //     .then(result => console.log(result))
-
-    // }
+    getUser(){
+        fetch(`http://localhost:8440/user`,
+        {
+            method:'get',
+            headers:{
+                "Accept": "application/json",
+                "Content-type": "application/json; charset = UTF-8"
+            }
+        }
+        )
+        .then(res => res.json())
+        .then(result => console.log(result))
+    }
 }
 
 export default FetchClass;
