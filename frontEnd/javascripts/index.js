@@ -60,9 +60,6 @@ body.addEventListener('click', (e)=>{
         case "post":
             memoApp.bringFront(postItMenu.targetConvert(e.target))
             break;
-        case "login":
-            login.loginCheck(FetchClass.userData, memoApp.listRender)
-            break;
         default:
             ContextMenu.remove()
             return;
