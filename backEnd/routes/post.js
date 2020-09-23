@@ -24,14 +24,14 @@ router.post('/create', (req, res) => {
 router.get('/color', (req,res)=>{
     db.query(`UPDATE MEMO SET COLOR = '${req.query.color}' WHERE ID = ${req.query.id}`, (err)=>{
         if (err) throw err;
-        res.redirect('/');
+        res.sendStatus(200);
     })
 })
 
 router.get('/position', (req,res)=>{
     db.query(`UPDATE MEMO SET pageX = '${req.query.pageX}', pageY = '${req.query.pageY}' WHERE ID = ${req.query.id}`, (err)=>{
         if (err) throw err;
-        res.redirect('/');
+        res.sendStatus(200);
     })
 })
 
@@ -40,7 +40,7 @@ router.put('/', (req, res) => {
     const postid = req.body.id;
     db.query(`UPDATE MEMO SET TEXT = ${text} WHERE ID = ${postid}`, (err) =>{
         if (err) throw err;
-        res.redirect('/');
+        res.sendStatus(200);
     })
 })
 

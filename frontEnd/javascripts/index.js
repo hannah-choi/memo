@@ -7,9 +7,9 @@ import Login from './Login.js'
 
 const memoSection = document.querySelector('.memoSection')
 const body = document.querySelector('body')
-const memoApp = new MemoManager()
 const fetchClass = new FetchClass()
-fetchClass.getData(memoApp.listRender)
+const memoApp = new MemoManager()
+fetchClass.getData(memoApp.updateData)
 const postItMenu = new PostItMenu(memoApp.listRender, memoSection)
 const bgMenu = new BgMenu(memoApp.listRender, memoSection)
 const filterSection = document.querySelector('.memoList')

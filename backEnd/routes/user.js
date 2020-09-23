@@ -8,18 +8,17 @@ router.get('/', (req,res)=>{
     })
 })
 
-router.post('/login', (req, res)=>{
+router.post('/login', (req, res) => {
     console.log(req.body)
     db.query(`SELECT COUNT(*) as count FROM user WHERE email = '${req.body.email}' and password = '${req.body.password}'`, (err,rows)=>{ 
         if(rows[0].count === 0){
             res.redirect('/login.html')
         } else {
+            res.set('Set-Cookie', [`username=${req.body.email}`,`password=${req.body.password}`]);
             res.redirect('/index.html')
-            res.set('Set-Cookie', [`username=${req.body.email}`,`password=${req.body.password}`])}
-
-    })
-  });
-
+        }
+    });
+})
 
 
 // router.get('/my', (req,res)=>{

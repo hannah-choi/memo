@@ -5,7 +5,7 @@ class FetchClass{
     static data;
     static userData;
 
-    getData(listRender){
+    getData(updateData){
         fetch('http://localhost:8440/post',
             {
                 method:'get',
@@ -16,10 +16,12 @@ class FetchClass{
             }
             )
             .then(res => res.json())
-            .then(result => {
-                listRender(result);
-                FetchClass.data = result;
-            })
+            .then(result => updateData(result))
+            
+            //     {
+            //     listRender(result);
+            //     FetchClass.data = result;
+            // }
 
     }
 
@@ -32,12 +34,12 @@ class FetchClass{
             .then(result => listRender(result))
     }
 
-    static colorChange(selected, changedColor, listRender){
+    static colorChange(selected, changedColor, updateData){
         const findData = this.data.find(item => item.id === +selected.dataset.id);
         findData.color = changedColor;
         fetch(`http://localhost:8440/post/color?id=${findData.id}&color=${changedColor}`)
             .then(res => res.json())
-            .then(result => listRender(result))
+            .then(result => console.log(result))
     }
 
     removeMemo(id, listRender){
