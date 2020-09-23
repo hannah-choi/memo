@@ -13,28 +13,30 @@ fetchClass.getData(memoApp.listRender)
 const postItMenu = new PostItMenu(memoApp.listRender, memoSection)
 const bgMenu = new BgMenu(memoApp.listRender, memoSection)
 const filterSection = document.querySelector('.memoList')
+const login = new Login();
+fetchClass.getUser();
 
-const users = [
-    {
-        userid:1,
-        username: "aaa",
-        password: "123"
-    },
+// const users = [
+//     {
+//         userid:1,
+//         username: "aaa",
+//         password: "123"
+//     },
 
-    {
-        userid:2,
-        username: "bbb",
-        password: "456"
-    }, 
+//     {
+//         userid:2,
+//         username: "bbb",
+//         password: "456"
+//     }, 
 
-    {
-        userid:3,
-        username: "ccc",
-        password: "789"
-    },
-]
+//     {
+//         userid:3,
+//         username: "ccc",
+//         password: "789"
+//     },
+// ]
 
-const login = new Login(users)
+
 
 body.addEventListener('click', (e)=>{
     switch(e.target.dataset.name){
@@ -59,7 +61,7 @@ body.addEventListener('click', (e)=>{
             memoApp.bringFront(postItMenu.targetConvert(e.target))
             break;
         case "login":
-            login.loginCheck()
+            login.loginCheck(FetchClass.userData, memoApp.listRender)
             break;
         default:
             ContextMenu.remove()

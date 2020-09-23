@@ -1,7 +1,10 @@
 //import PostItMenu from "./PostItMenu";
+import Login from './Login.js'
 
 class FetchClass{
     static data;
+    static userData;
+
     getData(listRender){
         fetch('http://localhost:8440/post',
             {
@@ -74,7 +77,7 @@ class FetchClass{
     }
 
     getUser(){
-        fetch(`http://localhost:8440/user`,
+        fetch('http://localhost:8440/user',
         {
             method:'get',
             headers:{
@@ -84,8 +87,24 @@ class FetchClass{
         }
         )
         .then(res => res.json())
-        .then(result => console.log(result))
+        .then(result => {
+            FetchClass.userData = result;
+        })
     }
+
+    static showUserMemo(cookieObj, listRender){
+        fetch('http://localhost:8440/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(cookieObj)
+            })
+        .then(res => res.json())
+        .then(result => listRender(result))
+    }
+
+
 }
 
 export default FetchClass;

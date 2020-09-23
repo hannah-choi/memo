@@ -50,7 +50,6 @@ class PostItMenu extends ContextMenu{
         })
     }
 
-
     targetConvert(target){
         if(target.tagName === "HEADER"){
             return target.parentElement

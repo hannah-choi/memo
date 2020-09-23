@@ -1,6 +1,8 @@
+import FetchClass from './FetchClass.js'
+
 class Login{
-    constructor(users){
-        this.users = users
+    constructor(){
+        //this.users = users
         this.loginDiv = document.querySelector('.login')
         this.username = document.getElementById('username')
         this.password = document.getElementById('password')
@@ -8,12 +10,17 @@ class Login{
         this.selectedIndex = null;
     }
 
-    loginCheck(){
+
+    loginCheck(users, listRender){
+        let cookieObj = null;
         if(this.username.value && this.password.value){
-            for(let i = 0; i<this.users.length; i++){
-                if(this.username.value === this.users[i].username &&
-                    this.password.value === this.users[i].password){
+            for(let i = 0; i<users.length; i++){
+                if(this.username.value === users[i].username &&
+                    this.password.value === users[i].password){
                         alert(`Successfully logged in`)
+                        cookieObj = { username:`${users[i].username}`, password:`${users[i].password}`, userID:`${users[i].userID}` }
+                        this.loginDiv.style.display = "none";
+                        FetchClass.showUserMemo(cookieObj, listRender);
                         return;
                     }   
             }
