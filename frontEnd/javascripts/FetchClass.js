@@ -19,19 +19,19 @@ class FetchClass{
             .then(result => updateData(result))
             
             //     {
-            //     listRender(result);
+            //     updateData(result);
             //     FetchClass.data = result;
             // }
 
     }
 
-    pageUpdate(selected, pageXValue, pageYValue, listRender){
+    pageUpdate(selected, pageXValue, pageYValue, updateData){
         const findData = FetchClass.data.find(item => item.id === +selected.dataset.id)
         findData.pageX = pageXValue;
         findData.pageY = pageYValue;
         fetch(`http://localhost:8440/post/position?id=${+selected.dataset.id}&pageX=${pageXValue.slice(0,-2)}&pageY=${pageYValue.slice(0,-2)}`)
             .then(res => res.json())
-            .then(result => listRender(result))
+            .then(result => updateData(result))
     }
 
     static colorChange(selected, changedColor, updateData){
@@ -42,13 +42,13 @@ class FetchClass{
             .then(result => console.log(result))
     }
 
-    removeMemo(id, listRender){
+    removeMemo(id, updateData){
         fetch(`http://localhost:8440/post/delete?id=${id}`)
         .then(res => res.json())
-        .then(result => listRender(result))
+        .then(result => updateData(result))
     }
 
-    createMemo(x, y, listRender){
+    createMemo(x, y, updateData){
         fetch(`http://localhost:8440/post/create`, {
             method: 'POST',
             headers: {
@@ -57,23 +57,23 @@ class FetchClass{
               body: JSON.stringify({pageX: `${x}`, pageY: `${y}`})
             })
         .then(res => res.json())
-        .then(result => listRender(result))
+        .then(result => updateData(result))
     }
 
-    deleteAllMemo(listRender){
+    deleteAllMemo(updateData){
         fetch(`http://localhost:8440/post/all`, 
         {
             method:'DELETE'
         })
         .then(res => res.json())
-        .then(result => listRender(result))
+        .then(result => updateData(result))
     }
 
-    colorFilter(color, listRender){
+    colorFilter(color, updateData){
         fetch(`http://localhost:8440/post/filter?color=${color}`)
         .then(res => res.json())
         .then(result => {
-            listRender(result);
+            updateData(result);
             FetchClass.data = result;
         })
     }
@@ -94,7 +94,7 @@ class FetchClass{
         })
     }
 
-    static showUserMemo(cookieObj, listRender){
+    static showUserMemo(cookieObj, updateData){
         fetch('http://localhost:8440/user/login', {
             method: 'POST',
             headers: {
@@ -103,7 +103,7 @@ class FetchClass{
               body: JSON.stringify(cookieObj)
             })
         .then(res => res.json())
-        .then(result => listRender(result))
+        .then(result => updateData(result))
     }
 
 

@@ -2,7 +2,7 @@ import Memo from './Memo.js'
 
 class MemoManager{
     constructor(){
-        //this.listRender()
+        //this.updateData()
         // console.log(this.data)
         this.memoSection = document.querySelector('.memoSection')
         this.memos = null;
@@ -20,7 +20,7 @@ class MemoManager{
     removeMemo(selected){
         const selectedId = this.memos.findIndex(data => data.id === +selected);
         this.memos.splice(selectedId, 1);
-        //this.listRender()
+        this.updateData()
     }
 
     deleteAllMemo(){
@@ -31,7 +31,7 @@ class MemoManager{
         const selectedId = this.memos.findIndex(data => data.memoId === +selected);
         this.memos[selectedId].memoContents = newValue;
         //console.log(this.memos[selectedId].memoContents)
-        this.listRender()
+        this.updateData()
     }
 
     minimize(selected){
