@@ -11,7 +11,7 @@ class Login{
     }
 
 
-    loginCheck(users, listRender){
+    loginCheck(users, updateData){
         let cookieObj = null;
         if(this.email.value && this.password.value){
             for(let i = 0; i<users.length; i++){
@@ -20,7 +20,7 @@ class Login{
                         alert(`Successfully logged in`)
                         cookieObj = { email:`${users[i].email}`, password:`${users[i].password}`, userID:`${users[i].userID}` }
                         this.loginDiv.style.display = "none";
-                        FetchClass.showUserMemo(cookieObj, listRender);
+                        FetchClass.showUserMemo(cookieObj, updateData);
                         return;
                     }   
             }

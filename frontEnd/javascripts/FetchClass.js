@@ -57,7 +57,7 @@ class FetchClass{
               body: JSON.stringify({pageX: `${x}`, pageY: `${y}`})
             })
         .then(res => res.json())
-        .then(result => updateData(result))
+        .then(result => console.log(result))
     }
 
     deleteAllMemo(updateData){

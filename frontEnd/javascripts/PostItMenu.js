@@ -44,7 +44,7 @@ class PostItMenu extends ContextMenu{
             switch(target.dataset.name){
                 case "color":
                     this.memoColorChange(target.className)
-                    FetchClass.colorChange(this.clickedItem, target.className, this.listRender)
+                    FetchClass.colorChange(this.clickedItem, target.className, this.updateData)
                     break;
             }   
         })

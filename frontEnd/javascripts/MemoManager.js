@@ -78,7 +78,6 @@ class MemoManager{
     }
     
     listRender(){ //데이터를 받아서 리스트를 그려주는 역할
-        console.log(this.data);
         this.memos = this.data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
         const memosArray = this.memos.map(memo => memo.render()).join('');
         this.memoSection.innerHTML = memosArray;

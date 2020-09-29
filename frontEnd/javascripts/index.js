@@ -16,28 +16,6 @@ const filterSection = document.querySelector('.memoList')
 const login = new Login();
 fetchClass.getUser();
 
-// const users = [
-//     {
-//         userid:1,
-//         username: "aaa",
-//         password: "123"
-//     },
-
-//     {
-//         userid:2,
-//         username: "bbb",
-//         password: "456"
-//     }, 
-
-//     {
-//         userid:3,
-//         username: "ccc",
-//         password: "789"
-//     },
-// ]
-
-
-
 body.addEventListener('click', (e)=>{
     switch(e.target.dataset.name){
         case "create":
@@ -65,7 +43,6 @@ body.addEventListener('click', (e)=>{
             return;
         }
     })
-
     
 memoSection.addEventListener('contextmenu', (e)=>{
     e.preventDefault(); 
