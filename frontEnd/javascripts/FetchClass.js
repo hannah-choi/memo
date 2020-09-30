@@ -16,7 +16,10 @@ class FetchClass{
             }
             )
             .then(res => res.json())
-            .then(result => updateData(result))
+            .then(result => {
+                updateData(result);
+                FetchClass.data = result;
+                })
     }
 
     
@@ -35,16 +38,15 @@ class FetchClass{
         findData.color = changedColor;
         fetch(`http://localhost:8440/post/color?id=${findData.id}&color=${changedColor}`)
             .then(res => res.json())
-            .then(result => console.log(result))
+            .then(result => updateData(result))
     }
 
-    removeMemo(id, updateData){
+    removeMemo(id){
         fetch(`http://localhost:8440/post/delete?id=${id}`)
-        .then(res => res.json())
-        .then(result => updateData(result))
+        .then(res => res.text())
     }
 
-    createMemo(x, y, createMemo){
+    createMemo(x, y, newMemo){
         fetch(`http://localhost:8440/post/create`, {
             method: 'POST',
             headers: {
@@ -53,7 +55,7 @@ class FetchClass{
               body: JSON.stringify({pageX: `${x}`, pageY: `${y}`})
             })
         .then(res => res.json())
-        .then(result => createMemo(result))
+        .then(result => newMemo(result))
     }
 
     deleteAllMemo(updateData){

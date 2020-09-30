@@ -14,26 +14,23 @@ class MemoManager{
         this.firstLoad = false;
     }
 
-
     updateData = (data) => {
-        this.data = data
-        if(this.firstLoad === false){
-            this.memos = this.data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
-            this.firstLoad = true}
-        this.listRender()
-    }
-
-    createMemo(data){
-        //this.listRender(data)
-        console.log(this.memos)
-        this.memos.push(data)
-        this.updateData()
+        this.data = data;
+        this.memos = this.data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
+        this.listRender();
     }
 
     removeMemo(selected){
         const selectedId = this.memos.findIndex(data => data.memoId === +selected);
         this.memos.splice(selectedId, 1);
-        this.updateData()
+        this.listRender();
+    }
+
+    newMemo = (data) => {
+        console.log(data)
+        const memo = new Memo(data.text, data.color, data.id, data.pageX-200, data.pageY)
+        this.memos.push(memo);
+        this.listRender();
     }
 
     deleteAllMemo(){
@@ -41,10 +38,10 @@ class MemoManager{
     }
 
     updateMemo(selected, newValue){
-        const selectedId = this.memos.findIndex(data => data.memoId === +selected);
-        this.memos[selectedId].memoContents = newValue;
+        const selectedId = this.data.findIndex(data => data.memoId === +selected);
+        this.data[selectedId].memoContents = newValue;
         //console.log(this.memos[selectedId].memoContents)
-        this.updateData()
+        this.updateData(this.data);
     }
 
     minimize(selected){

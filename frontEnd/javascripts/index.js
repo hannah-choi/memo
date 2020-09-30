@@ -19,24 +19,25 @@ fetchClass.getUser();
 body.addEventListener('click', (e)=>{
     switch(e.target.dataset.name){
         case "create":
-            fetchClass.createMemo(e.clientX, e.clientY, memoApp.createMemo)
+            fetchClass.createMemo(e.clientX, e.clientY, memoApp.newMemo);
+            //memoApp.newMemo(e.clientX, e.clientY);
             break;
         case "deleteAll":
             memoApp.deleteAllMemo();
             fetchClass.deleteAllMemo(memoApp.updateData);
             break;
         case "remove":
-            memoApp.removeMemo(e.target.dataset.id)
-            fetchClass.removeMemo(+e.target.dataset.id, memoApp.updateData)
+            memoApp.removeMemo(e.target.dataset.id);
+            fetchClass.removeMemo(+e.target.dataset.id);
             break;
         case "minimize":
-            memoApp.minimize(e.target.parentElement.parentElement)
+            memoApp.minimize(e.target.parentElement.parentElement);
             break;
         case "maximize":
-            memoApp.maximize(e.target)
+            memoApp.maximize(e.target);
             break;
         case "post":
-            memoApp.bringFront(postItMenu.targetConvert(e.target))
+            memoApp.bringFront(postItMenu.targetConvert(e.target));
             break;
         default:
             ContextMenu.remove()
