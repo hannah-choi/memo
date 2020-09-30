@@ -67,7 +67,8 @@ memoSection.addEventListener('change', ({target})=>{
     switch(target.tagName){
         case "TEXTAREA":
             memoApp.updateMemo(target.dataset.id, target.value);
-            data[target.dataset.id].text = target.value
+            fetchClass.updateMemo(target.dataset.id, target.value);
+            //data[target.dataset.id].text = target.value
             break;
     }    
 }) 

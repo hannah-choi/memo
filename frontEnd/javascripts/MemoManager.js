@@ -38,8 +38,8 @@ class MemoManager{
     }
 
     updateMemo(selected, newValue){
-        const selectedId = this.data.findIndex(data => data.memoId === +selected);
-        this.data[selectedId].memoContents = newValue;
+        const selectedId = this.data.findIndex(data => data.id === +selected);
+        this.data[selectedId].text = newValue;
         //console.log(this.memos[selectedId].memoContents)
         this.updateData(this.data);
     }

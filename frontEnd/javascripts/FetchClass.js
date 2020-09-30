@@ -24,21 +24,19 @@ class FetchClass{
 
     
 
-    pageUpdate(selected, pageXValue, pageYValue, updateData){
+    pageUpdate(selected, pageXValue, pageYValue){
         const findData = FetchClass.data.find(item => item.id === +selected.dataset.id)
         findData.pageX = pageXValue;
         findData.pageY = pageYValue;
         fetch(`http://localhost:8440/post/position?id=${+selected.dataset.id}&pageX=${pageXValue.slice(0,-2)}&pageY=${pageYValue.slice(0,-2)}`)
-            .then(res => res.json())
-            .then(result => updateData(result))
+            .then(res => res.text())
     }
 
-    static colorChange(selected, changedColor, updateData){
-        const findData = this.data.find(item => item.id === +selected.dataset.id);
+    static colorChange(selected, changedColor){
+        const findData = FetchClass.data.find(item => item.id === +selected.dataset.id);
         findData.color = changedColor;
         fetch(`http://localhost:8440/post/color?id=${findData.id}&color=${changedColor}`)
-            .then(res => res.json())
-            .then(result => updateData(result))
+            .then(res => res.text())
     }
 
     removeMemo(id){
@@ -56,6 +54,17 @@ class FetchClass{
             })
         .then(res => res.json())
         .then(result => newMemo(result))
+    }
+
+    updateMemo(id, newText){
+        fetch(`http://localhost:8440/post/update`,{
+            method: 'PUT', 
+            headers: {
+            'Content-type': 'application/json; charset=UTF-8' 
+            },
+            body: JSON.stringify({text: `${newText}`, id: `${id}`})
+            }
+        )
     }
 
     deleteAllMemo(updateData){
