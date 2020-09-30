@@ -27,7 +27,6 @@ class MemoManager{
     }
 
     newMemo = (data) => {
-        console.log(data)
         const memo = new Memo(data.text, data.color, data.id, data.pageX-200, data.pageY)
         this.memos.push(memo);
         this.listRender();
@@ -35,6 +34,7 @@ class MemoManager{
 
     deleteAllMemo(){
         this.memos.splice(0);
+        this.listRender();
     }
 
     updateMemo(selected, newValue){

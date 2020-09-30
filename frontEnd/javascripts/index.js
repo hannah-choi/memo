@@ -24,7 +24,7 @@ body.addEventListener('click', (e)=>{
             break;
         case "deleteAll":
             memoApp.deleteAllMemo();
-            fetchClass.deleteAllMemo(memoApp.updateData);
+            fetchClass.deleteAllMemo();
             break;
         case "remove":
             memoApp.removeMemo(e.target.dataset.id);

@@ -36,7 +36,6 @@ router.get('/position', (req,res)=>{
 })
 
 router.put('/update', (req, res) => {
-    console.log(req.body)
     const text = req.body.text;
     const postid = req.body.id;
     db.query(`UPDATE MEMO SET TEXT = '${text}' WHERE ID = ${parseInt(postid)}`, (err) =>{

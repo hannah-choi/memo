@@ -67,13 +67,12 @@ class FetchClass{
         )
     }
 
-    deleteAllMemo(updateData){
+    deleteAllMemo(){
         fetch(`http://localhost:8440/post/all`, 
         {
             method:'DELETE'
         })
-        .then(res => res.json())
-        .then(result => updateData(result))
+        .then(res => res.text)
     }
 
     colorFilter(color, updateData){
