@@ -19,7 +19,7 @@ fetchClass.getUser();
 body.addEventListener('click', (e)=>{
     switch(e.target.dataset.name){
         case "create":
-            fetchClass.createMemo(e.clientX, e.clientY, memoApp.updateData)
+            fetchClass.createMemo(e.clientX, e.clientY, memoApp.createMemo)
             break;
         case "deleteAll":
             memoApp.deleteAllMemo();

@@ -2,8 +2,8 @@
 import Login from './Login.js'
 
 class FetchClass{
+
     static data;
-    static userData;
 
     getData(updateData){
         fetch('http://localhost:8440/post',
@@ -17,13 +17,9 @@ class FetchClass{
             )
             .then(res => res.json())
             .then(result => updateData(result))
-            
-            //     {
-            //     updateData(result);
-            //     FetchClass.data = result;
-            // }
-
     }
+
+    
 
     pageUpdate(selected, pageXValue, pageYValue, updateData){
         const findData = FetchClass.data.find(item => item.id === +selected.dataset.id)
@@ -48,7 +44,7 @@ class FetchClass{
         .then(result => updateData(result))
     }
 
-    createMemo(x, y, updateData){
+    createMemo(x, y, createMemo){
         fetch(`http://localhost:8440/post/create`, {
             method: 'POST',
             headers: {
@@ -57,7 +53,7 @@ class FetchClass{
               body: JSON.stringify({pageX: `${x}`, pageY: `${y}`})
             })
         .then(res => res.json())
-        .then(result => console.log(result))
+        .then(result => createMemo(result))
     }
 
     deleteAllMemo(updateData){

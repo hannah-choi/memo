@@ -1,20 +1,31 @@
 import Memo from './Memo.js'
 
 class MemoManager{
-    constructor(){
+    constructor(data){
         //this.updateData()
-        // console.log(this.data)
+        //console.log(data)
         this.memoSection = document.querySelector('.memoSection')
-        this.memos = null;
+        this.data = data;
+        //this.memos = this.data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
         this.selected = null;
+        this.memos = null;
         this.shiftX = null;
         this.shiftY = null;
-        this.data = null;
+        this.firstLoad = false;
     }
+
 
     updateData = (data) => {
         this.data = data
-        this.listRender(data)
+        if(this.firstLoad === false){
+            this.memos = this.data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
+            this.firstLoad = true}
+        this.listRender()
+    }
+
+    createMemo(data){
+        //this.listRender(data)
+        this.memos.push(data)
     }
 
     removeMemo(selected){
@@ -78,7 +89,6 @@ class MemoManager{
     }
     
     listRender(){ //데이터를 받아서 리스트를 그려주는 역할
-        this.memos = this.data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
         const memosArray = this.memos.map(memo => memo.render()).join('');
         this.memoSection.innerHTML = memosArray;
     }
