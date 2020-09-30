@@ -25,11 +25,13 @@ class MemoManager{
 
     createMemo(data){
         //this.listRender(data)
+        console.log(this.memos)
         this.memos.push(data)
+        this.updateData()
     }
 
     removeMemo(selected){
-        const selectedId = this.memos.findIndex(data => data.id === +selected);
+        const selectedId = this.memos.findIndex(data => data.memoId === +selected);
         this.memos.splice(selectedId, 1);
         this.updateData()
     }
