@@ -9,13 +9,13 @@ router.get('/', (req, res) => {
 })
 
 router.post('/create', (req, res) => {
-    db.query(`INSERT INTO MEMO(COLOR, PAGEX, PAGEY) VALUES('lightblue', '${req.body.pageX}', '${req.body.pageY}')`, (err, rows)=>{
+    db.query(`INSERT INTO MEMO(COLOR, PAGEX, PAGEY) VALUES('lightblue', '${req.body.pageX-200}', '${req.body.pageY}')`, (err, rows)=>{
         if (err) throw err;
         res.send({ 
             text:"",
             color:'lightblue',
             id:rows.insertId,
-            pageX:req.body.pageX,
+            pageX:req.body.pageX-200,
             pageY:req.body.pageY                
         });
     });

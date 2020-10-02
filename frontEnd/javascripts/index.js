@@ -20,7 +20,6 @@ body.addEventListener('click', (e)=>{
     switch(e.target.dataset.name){
         case "create":
             fetchClass.createMemo(e.clientX, e.clientY, memoApp.newMemo);
-            //memoApp.newMemo(e.clientX, e.clientY);
             break;
         case "deleteAll":
             memoApp.deleteAllMemo();
@@ -68,7 +67,6 @@ memoSection.addEventListener('change', ({target})=>{
         case "TEXTAREA":
             memoApp.updateMemo(target.dataset.id, target.value);
             fetchClass.updateMemo(target.dataset.id, target.value);
-            //data[target.dataset.id].text = target.value
             break;
     }    
 }) 

@@ -6,8 +6,8 @@ class BgMenu extends ContextMenu{
         temp.innerHTML = `
             <div class = "contextMenu">
                 <ul>
-                <li data-name="create">New memo</li>
-                <li data-name="deleteAll">Delete all</li>
+                <li class="contextItem" data-name="create">New memo</li>
+                <li class="contextItem" data-name="deleteAll">Delete all</li>
                 </ul>
             </div>`
         this.menu = temp.children[0]
