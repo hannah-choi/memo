@@ -19,21 +19,22 @@ const users = [
 router.use((req, res, next)=>{
 
 	if(req.path !== '/login'){
-		res.redirect('/login')
+		if(!req.cookies.email || !req.cookies.password){
+			res.redirect('/login')
+		} else {
+			if(userCheck(req.cookies.email, req.cookies.password) === false){
+				res.redirect('/login')
+			}
+			
+		}
+
+
 	}
 
-	for(let i = 0; i < users.length; i++){
-		if(req.cookies.email === users[i].email && req.cookies.password === users[i].password){
-			req.isLogin = true;
-			return;
-		}
-		else {
-			if(req.path !== '/login'){
-			res.render('login', { title: 'Login' });}
-			//res.render('login', { title: 'Login' });
-			req.isLogin = false;
-		}		
-	}
+	// else(){
+
+	// }
+
 	next()
 })
 
@@ -43,7 +44,14 @@ router.use((req, res, next)=>{
 // else {
 	
 // }
-
+function userCheck(email, password){
+	for(let i = 0; i<users.length; i++){
+		if (email !== users[i].email && 
+		password !== users[i].password)
+		{ return false }
+		else { return true }
+	}
+}
 
 router.get('/', function(req, res, next) {
   let reqCookie = req.headers.cookie;
@@ -54,36 +62,29 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  console.log(cookie.parse(req.headers.cookie))
+  //console.log(cookie.parse(req.headers.cookie))
   res.render('login', { title: 'Login' });
 });
 
 router.post('/login', function(req, res, next) {
   const { email, password } = req.body;
-	for(let i = 0; i<users.length; i++){
-		if(email === users[i].email && password === users[i].password){
-			res.set('Set-Cookie', [`email=${email}`, `password= ${password}`])
-			res.render('index', { title: 'Express', email: `${email}`, userid: '1' });
-		} 
+  	if(userCheck(req.body.email, req.body.password) === true){
+		res.set('Set-Cookie', [`email=${email}`, `password= ${password}`])
+		res.render('index', { title: 'Express', email: `${email}`, userid: '1' });}
+	else{
+		res.render('login', { title: 'Login' });
 	}
 });
 
 router.get('/index', function(req, res, next) {
-	if(req.isLogin){
 		res.render('index', { title: 'Express', email: `${req.cookies.email}`, userid: '1' })
-	} 
 	}
 )
 
-
 router.get('/index2', function(req, res, next) {
-	if(req.isLogin){
-		res.render('index2', { title: 'Express', email: `${reqCookie.email}`, userid: `${reqCookie.userid}` });
-	} else {
-		res.render('login', { title: 'Login' });
+		res.render('index2', { title: 'Express', email: `${req.cookies.email}`, userid: `${req.cookies.userid}` });
+		//res.render('login', { title: 'Login' });
 	}
-	}
-
 	// if (req.cookies.email){
 	// 	res.render('index2', { title: 'Express', email: `${req.cookies.email}` });
 	// } else  {
