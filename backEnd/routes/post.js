@@ -11,13 +11,13 @@ router.get('/', (req, res) => {
 router.post('/create', (req, res) => {
     db.query(`INSERT INTO MEMO(COLOR, PAGEX, PAGEY) VALUES('lightblue', '${req.body.pageX-200}', '${req.body.pageY}')`, (err, rows)=>{
         if (err) throw err;
-        res.send({ 
+        res.send([{ 
             text:"",
             color:'lightblue',
             id:rows.insertId,
             pageX:req.body.pageX-200,
             pageY:req.body.pageY                
-        });
+        }]);
     });
 });
 
@@ -47,14 +47,14 @@ router.put('/update', (req, res) => {
 router.get('/delete', (req, res)=>{
     db.query(`DELETE FROM MEMO WHERE ID = ${req.query.id}`, (err)=>{
         if (err) throw err;
-        res.redirect('/');
+        res.send('success');
     })
 })
 
 router.delete('/all', (req, res)=>{
     db.query(`DELETE FROM MEMO`, (err)=>{
         if (err) throw err;
-        res.redirect('/');
+        res.send('success');
     })
 })
 

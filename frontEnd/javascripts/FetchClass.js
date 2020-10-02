@@ -22,8 +22,6 @@ class FetchClass{
                 })
     }
 
-    
-
     pageUpdate(selected, pageXValue, pageYValue){
         const findData = FetchClass.data.find(item => item.id === +selected.dataset.id)
         findData.pageX = pageXValue;
@@ -38,9 +36,12 @@ class FetchClass{
         fetch(`http://localhost:8440/post/color?id=${findData.id}&color=${changedColor}`)
             .then(res => res.text())
     }
-
+    // async removeMemo(id){
+    //     fetch(`http://localhost:8440/post/delete?id=${id}`)
+    //     .then(res => res.text())
+    // }
     removeMemo(id){
-        fetch(`http://localhost:8440/post/delete?id=${id}`)
+        return fetch(`http://localhost:8440/post/delete?id=${id}`)
         .then(res => res.text())
     }
 
@@ -53,7 +54,10 @@ class FetchClass{
               body: JSON.stringify({pageX: `${x}`, pageY: `${y}`})
             })
         .then(res => res.json())
-        .then(result => newMemo(result))
+        .then(result => {
+            newMemo(result)
+            FetchClass.data = result
+            console.log(FetchClass.data)})
     }
 
     updateMemo(id, newText){
@@ -68,11 +72,9 @@ class FetchClass{
     }
 
     deleteAllMemo(){
-        fetch(`http://localhost:8440/post/all`, 
-        {
-            method:'DELETE'
-        })
-        .then(res => res.text)
+        return fetch(`http://localhost:8440/post/all`, 
+        { method:'DELETE'})
+        .then(res => res.text())
     }
 
     colorFilter(color, updateData){

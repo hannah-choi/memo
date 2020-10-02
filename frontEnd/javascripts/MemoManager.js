@@ -27,7 +27,7 @@ class MemoManager{
     }
 
     newMemo = (data) => {
-        const memo = new Memo(data.text, data.color, data.id, data.pageX, data.pageY)
+        const memo = new Memo(data[0].text, data[0].color, data[0].id, data[0].pageX, data[0].pageY)
         this.memos.push(memo);
         this.listRender();
     }

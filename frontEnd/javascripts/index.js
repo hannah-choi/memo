@@ -22,12 +22,20 @@ body.addEventListener('click', (e)=>{
             fetchClass.createMemo(e.clientX, e.clientY, memoApp.newMemo);
             break;
         case "deleteAll":
-            memoApp.deleteAllMemo();
-            fetchClass.deleteAllMemo();
+            fetchClass.deleteAllMemo()
+            .then(text => {
+                if(text === 'success'){
+                    memoApp.deleteAllMemo();
+                }
+            });
             break;
         case "remove":
-            memoApp.removeMemo(e.target.dataset.id);
-            fetchClass.removeMemo(+e.target.dataset.id);
+            fetchClass.removeMemo(+e.target.dataset.id)
+            .then(text => {
+                if(text === 'success'){
+                    memoApp.removeMemo(e.target.dataset.id);
+                }
+            });
             break;
         case "minimize":
             memoApp.minimize(e.target.parentElement.parentElement);
