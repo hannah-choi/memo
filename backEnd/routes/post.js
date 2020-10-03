@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../db.js');
 
 router.get('/', (req, res) => {
-    db.query(`SELECT * FROM MEMO`, (err,rows)=>{
+    db.query(`SELECT memo.userID, email, id, color,pageX, pageY FROM memo JOIN user ON memo.userID = user.userID WHERE email = '${req.cookies.email}`, (err,rows)=>{
         res.send(rows);
     })
 })

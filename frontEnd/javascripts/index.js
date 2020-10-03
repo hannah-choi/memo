@@ -53,7 +53,8 @@ body.addEventListener('click', (e)=>{
     })
     
 memoSection.addEventListener('contextmenu', (e)=>{
-    e.preventDefault(); 
+    if(e.target.dataset.name !== 'login'){
+        e.preventDefault(); 
     let clickedItem = ""
     if(e.target.tagName === "HEADER"){
         clickedItem = e.target.parentElement
@@ -67,7 +68,7 @@ memoSection.addEventListener('contextmenu', (e)=>{
         bgMenu.rightButtonClick(e.clientY, e.clientX)
     } else {
         return;
-    }
+    }}
 })
 
 memoSection.addEventListener('change', ({target})=>{
