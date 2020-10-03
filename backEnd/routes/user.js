@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
     const { email, password } = req.body;
     db.query(`SELECT COUNT(*) as count FROM user WHERE email = '${req.body.email}' and password = '${req.body.password}'`, (err,rows)=>{ 
         if(rows[0].count === 0){
-            res.redirect('/')
+            res.send('fail')
         } else {
             res.set('Set-Cookie', [`email=${email}`,`password=${password}`]);
             res.redirect('/memo.html')

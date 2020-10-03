@@ -33,7 +33,7 @@ class FetchClass{
         fetch(`http://localhost:8440/post/color?id=${findData.id}&color=${changedColor}`)
             .then(res => res.text())
     }
-    
+
     removeMemo(id){
         return fetch(`http://localhost:8440/post/delete?id=${id}`)
         .then(res => res.text())
@@ -92,8 +92,6 @@ class FetchClass{
         .then(res => res.json())
         .then(result => updateData(result))
     }
-
-
 }
 
 export default FetchClass;

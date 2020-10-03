@@ -109,3 +109,4 @@ filterSection.addEventListener('click', (e)=>{
     } else {    
         fetchClass.colorFilter(e.target.dataset.name, memoApp.updateData)}
 })
+

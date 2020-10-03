@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="stylesheets/style.css" rel="stylesheet">
-    <script src="javascripts/index.js" type="module"></script>
+	<link href="stylesheets/style.css" rel="stylesheet">
+	<script src="javascripts/login.js" defer></script>
     <title>Login</title>
 </head>
 <body>
 	<div class="login">
-		<form action = "/user" method = "POST">
+		<form id="loginForm" action = "/user" method = "POST">
 			<label for="email">Email :</label><input type="text" id="email" name="email">
 			<label for="password">Password :</label><input type="password" id="password" name="password">
 			<input type="submit" data-name="login">
