@@ -5,7 +5,6 @@ const db = require('../db.js');
 router.get('/', (req, res) => {
     //req.cookie = 받아올때 외부모듈 cookieParser가 있어야 쓸 수 있다
     db.query(`SELECT memo.userID, email, text, id, color,pageX, pageY FROM memo JOIN user ON memo.userID = user.userID WHERE email = '${req.cookies.email}'`, (err,rows)=>{
-        //console.log(`SELECT memo.userID, email, id, color,pageX, pageY FROM memo JOIN user ON memo.userID = user.userID WHERE email = '${req.cookies.email}'`)
         res.send(rows);
     })
 })
@@ -59,7 +58,6 @@ router.delete('/all', (req, res)=>{
         res.send('success');
     })
 })
-
 
 router.get('/filter', (req,res)=>{
     db.query(`SELECT * FROM MEMO WHERE COLOR = '${req.query.color}'`, (err,rows)=>{

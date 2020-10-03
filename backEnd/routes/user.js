@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db.js');
-const cookie = require('cookie');
 
 router.use((req, res, next) => {
     if(req.path !== '/'){
@@ -18,7 +17,6 @@ router.use((req, res, next) => {
     next()
 })
 
-
 router.post('/', (req, res) => {
     console.log(req.body)
     const { email, password } = req.body;
@@ -31,20 +29,5 @@ router.post('/', (req, res) => {
         }
     });
 })
-
-
-// router.get('/', (req,res)=>{
-//     db.query(`SELECT memo.userID, email, id, color,pageX, pageY FROM memo JOIN user ON memo.userID = user.userID WHERE email = '${req.cookies.email}'`, (err,rows)=>{
-//         res.send(rows)
-//     })
-// })
-
-
-// router.get('/my', (req,res)=>{
-//     db.query(`SELECT * FROM user`, (err,rows)=>{
-//         res.send(rows)
-//     })
-// })
-
 
 module.exports = router;

@@ -1,6 +1,3 @@
-//import PostItMenu from "./PostItMenu";
-import Login from './Login.js'
-
 class FetchClass{
 
     static data;
@@ -36,10 +33,7 @@ class FetchClass{
         fetch(`http://localhost:8440/post/color?id=${findData.id}&color=${changedColor}`)
             .then(res => res.text())
     }
-    // async removeMemo(id){
-    //     fetch(`http:// localhost:8440/post/delete?id=${id}`)
-    //     .then(res => res.text())
-    // }
+    
     removeMemo(id){
         return fetch(`http://localhost:8440/post/delete?id=${id}`)
         .then(res => res.text())

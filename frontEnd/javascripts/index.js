@@ -3,7 +3,6 @@ import MemoManager from './MemoManager.js'
 import ContextMenu from './ContextMenu.js'
 import BgMenu from './BgMenu.js'
 import PostItMenu from './PostItMenu.js'
-import Login from './Login.js'
 
 const memoSection = document.querySelector('.memoSection')
 const body = document.querySelector('body')
