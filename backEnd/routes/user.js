@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
             res.redirect('/')
         } else {
             res.set('Set-Cookie', [`email=${email}`,`password=${password}`]);
-            res.send('success')
+            res.redirect('/memo.html')
         }
     });
 })
