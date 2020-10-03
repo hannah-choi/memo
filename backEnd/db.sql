@@ -11,10 +11,12 @@ CREATE TABLE `memo` (
 
 
 INSERT INTO memo (id, color, pageX, pageY, text, userID) VALUES ##insert문은 한번만!
-(6, 'blue', 573, 337, '234234324', 7),
-(11, 'lightpink', 234, 11, 'sdfdfsdfsdf', 44),
-(12, 'brightred', 220, 430, 'asdasdads', 22),
-(49, 'lightblue', -3, 385, null, null);
+  (307, 'brightred', 240, 254, 'werwerwer', 1),
+  (308, 'blue', 300, 161, 'reegdgfg', 0),
+  (309, 'lightblue', 500, 200, 'wrerwer', 2),
+  (310, 'lightpink', 100, 600, '563452345', 0),
+  (311, 'blue', 300, 400, 'dlskdjfskdlf', 1),
+  (312, 'lightpink', 700, 200, 'skdhfsdkf', 2);
 
 
 DROP TABLE IF EXISTS `user`;
@@ -26,7 +28,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `user_username_uindex` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-INSERT INTO user (userID, username, password) VALUES
-(0, 'aaa', '111'),
-(1, 'bbb', '222'),
-(2, 'ccc', '333');
+INSERT INTO memoSystem.user (userID, email, password) VALUES
+(0, 'a@a.com', '1111'),
+(1, 'b@b.com', '2222'),
+(2, 'c@c.com', '3333');
