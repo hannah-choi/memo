@@ -171,7 +171,8 @@ div.login input{
   margin:10px 0;
 }
 
-input[type=submit]{
+input[type=submit],
+button#logout{
   padding:10px;
   background-color: black;
   color:white;

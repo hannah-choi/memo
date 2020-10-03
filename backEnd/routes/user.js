@@ -18,16 +18,23 @@ router.use((req, res, next) => {
 })
 
 router.post('/', (req, res) => {
-    console.log(req.body)
     const { email, password } = req.body;
     db.query(`SELECT COUNT(*) as count FROM user WHERE email = '${req.body.email}' and password = '${req.body.password}'`, (err,rows)=>{ 
         if(rows[0].count === 0){
             res.send('fail')
         } else {
             res.set('Set-Cookie', [`email=${email}`,`password=${password}`]);
-            res.redirect('/memo.html')
+            res.send('success');
+            //res.redirect('/memo.html')
         }
     });
+})
+
+router.get('/logout', (req, res)=>{
+    res.clearCookie('email');
+    res.clearCookie('password');
+    //res.set('Set-Cookie', ['email=; Max-Age=0;','password=; Max-Age=0']);
+    res.redirect('/')
 })
 
 module.exports = router;

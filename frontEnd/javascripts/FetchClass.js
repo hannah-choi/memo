@@ -92,6 +92,10 @@ class FetchClass{
         .then(res => res.json())
         .then(result => updateData(result))
     }
+
+
+
+
 }
 
 export default FetchClass;
