@@ -3,7 +3,9 @@ const router = express.Router();
 const db = require('../db.js');
 
 router.get('/', (req, res) => {
-    db.query(`SELECT memo.userID, email, id, color,pageX, pageY FROM memo JOIN user ON memo.userID = user.userID WHERE email = '${req.cookies.email}`, (err,rows)=>{
+    //req.cookie = 받아올때 외부모듈 cookieParser가 있어야 쓸 수 있다
+    db.query(`SELECT memo.userID, email, text, id, color,pageX, pageY FROM memo JOIN user ON memo.userID = user.userID WHERE email = '${req.cookies.email}'`, (err,rows)=>{
+        //console.log(`SELECT memo.userID, email, id, color,pageX, pageY FROM memo JOIN user ON memo.userID = user.userID WHERE email = '${req.cookies.email}'`)
         res.send(rows);
     })
 })

@@ -15,7 +15,6 @@ const users = [
   }
 ]
 
-
 router.use((req, res, next)=>{
 
 	if(req.path !== '/login'){
@@ -27,23 +26,10 @@ router.use((req, res, next)=>{
 			}
 			
 		}
-
-
 	}
-
-	// else(){
-
-	// }
-
 	next()
 })
 
-/* GET home page. */
-
-
-// else {
-	
-// }
 function userCheck(email, password){
 	for(let i = 0; i<users.length; i++){
 		if (email !== users[i].email && 

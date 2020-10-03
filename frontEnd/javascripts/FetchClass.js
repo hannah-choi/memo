@@ -86,24 +86,9 @@ class FetchClass{
         })
     }
 
-    getUser(){
-        fetch('http://localhost:8440/user',
-        {
-            method:'get',
-            headers:{
-                "Accept": "application/json",
-                "Content-type": "application/json; charset = UTF-8"
-            }
-        }
-        )
-        .then(res => res.json())
-        .then(result => {
-            FetchClass.userData = result;
-        })
-    }
 
     static showUserMemo(cookieObj, updateData){
-        fetch('http://localhost:8440/user/login', {
+        fetch('http://localhost:8440/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

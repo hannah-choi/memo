@@ -13,8 +13,6 @@ fetchClass.getData(memoApp.updateData)
 const postItMenu = new PostItMenu(memoApp.updateData, memoSection)
 const bgMenu = new BgMenu(memoApp.updateData, memoSection)
 const filterSection = document.querySelector('.memoList')
-const login = new Login();
-fetchClass.getUser();
 
 body.addEventListener('click', (e)=>{
     switch(e.target.dataset.name){
