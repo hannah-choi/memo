@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="stylesheets/style.css" rel="stylesheet">
-	<script src="javascripts/login.js" defer></script>
-    <title>Login</title>
+	<script src="javascripts/index.js" type="module"></script>
+	<title>Memo</title>
 </head>
+
 <body>
 	<section class="memoList">
 			<ul class="memoUl">
@@ -14,10 +15,13 @@
 				<li data-name="blue"><div class="circle blue" data-name="blue"></div>Blue</li>
 				<li data-name="lightblue"><div class="circle lightblue" data-name="lightblue"></div>Light Blue</li>
 				<li data-name="brightred"><div class="circle brightred" data-name="brightred"></div>Bright Red</li>
-				<li data-name="lightpink"><div class="circle lightpink" data-name="lightpink"></div>LightPink</li>
+				<li data-name="lightpink"><div class="circle lightpink" data-name="lightpink"></div>Light Pink</li>
 			</ul>
+			<button id="logout" data-name="logout"><a href="http://localhost:8440/user/logout">Logout</a></button>
 	</section>
+	<section class="memoSection">
+		
 
-	<section class="memoSection"></section>
+	</section>
 </body>
 </html>

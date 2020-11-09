@@ -6,7 +6,6 @@ import PostItMenu from './PostItMenu.js'
 
 const memoSection = document.querySelector('.memoSection')
 const body = document.querySelector('body')
-const memoApp = new MemoManager()
 const fetchClass = new FetchClass()
 fetchClass.getData(memoApp.updateData)
 const postItMenu = new PostItMenu(memoApp.updateData, memoSection)
@@ -42,7 +41,7 @@ body.addEventListener('click', (e)=>{
             )
             break;
         case "minimize":
-            memoApp.minimize(e.target.parentElement.parentElement)
+            memoApp.minimize(e.target.parentElement.parentElement);
             break;
         case "maximize":
             memoApp.maximize(e.target.parentElement.parentElement)
@@ -55,9 +54,9 @@ body.addEventListener('click', (e)=>{
             return;
         }
     })
-
 memoSection.addEventListener('contextmenu', (e)=>{
-    e.preventDefault(); 
+    if(e.target.dataset.name !== 'login'){
+        e.preventDefault(); 
     let clickedItem = ""
     if(e.target.tagName === "HEADER"){
         clickedItem = e.target.parentElement
@@ -71,7 +70,7 @@ memoSection.addEventListener('contextmenu', (e)=>{
         bgMenu.rightButtonClick(e.clientY, e.clientX)
     } else {
         return;
-    }
+    }}
 })
 
 memoSection.addEventListener('change', ({target})=>{

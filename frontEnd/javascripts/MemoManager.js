@@ -3,8 +3,10 @@ import Memo from './Memo.js'
 class MemoManager{
     constructor(){
         this.memoSection = document.querySelector('.memoSection')
-        this.memos = null;
+        this.data = data;
+        //this.memos = this.data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
         this.selected = null;
+        this.memos = null;
         this.shiftX = null;
         this.shiftY = null;
         this.data = null;

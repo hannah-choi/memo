@@ -1,4 +1,5 @@
 class FetchClass{
+
     static data;
     getData(updateData){
         fetch(`post`,
@@ -14,8 +15,7 @@ class FetchClass{
             .then(result => {
                 updateData(result);
                 FetchClass.data = result;
-            })
-
+                })
     }
 
     pageUpdate(selected, pageXValue, pageYValue){
@@ -81,6 +81,10 @@ class FetchClass{
             filterData(result);           
         })
     }
+
+
+
+
 }
 
 export default FetchClass;
