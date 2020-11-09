@@ -24,7 +24,7 @@ router.post('/create', (req, res) => {
 router.get('/color', (req,res)=>{
     db.query(`UPDATE MEMO SET COLOR = '${req.query.color}' WHERE ID = ${req.query.id}`, (err)=>{
         if (err) throw err;
-        res.redirect('/');
+        res.send('success');
     })
 })
 

@@ -1,6 +1,6 @@
 class ContextMenu{
-    constructor(listRender, memoSection){
-        this.listRender = listRender;
+    constructor(updateData, memoSection){
+        this.updateData = updateData;
         this.memoSection = memoSection;
     }
 

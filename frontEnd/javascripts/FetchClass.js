@@ -1,5 +1,3 @@
-//import PostItMenu from "./PostItMenu";
-
 class FetchClass{
     static data;
     getData(updateData){
@@ -20,7 +18,7 @@ class FetchClass{
 
     }
 
-    pageUpdate(selected, pageXValue, pageYValue, updateData){
+    pageUpdate(selected, pageXValue, pageYValue){
         const findData = FetchClass.data.find(item => item.id === +selected.dataset.id)
         findData.pageX = pageXValue;
         findData.pageY = pageYValue;
@@ -29,7 +27,7 @@ class FetchClass{
     }
 
     static colorChange(selected, changedColor, updateData){
-        const findData = this.data.find(item => item.id === +selected.dataset.id);
+        const findData = FetchClass.data.find(item => item.id === +selected.dataset.id);
         findData.color = changedColor;
         fetch(`http://localhost:8440/post/color?id=${findData.id}&color=${changedColor}`)
             .then(res => res.json())
@@ -50,7 +48,10 @@ class FetchClass{
               body: JSON.stringify({pageX: x-200, pageY: y})
             })
         .then(res => res.json())
-        .then(result => createMemo(result))
+        .then(result => {
+                createMemo(result)
+                FetchClass.data.push(result)
+            })
     }
 
     deleteAllMemo(){

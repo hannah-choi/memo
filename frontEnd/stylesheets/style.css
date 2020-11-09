@@ -1,59 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
-@import url('reset.css');
+@import url("https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap");
+@import url("reset.css");
 
 body {
-  font-family: 'Sen', sans-serif;
-  color:#3C221C;
-  display: flex;
+    font-family: "Sen", sans-serif;
+    color: #3c221c;
+    display: flex;
 }
 
-.darkblue{
-  background-color: #293473;
-  color:white;
+.darkblue {
+    background-color: #293473;
+    color: white;
 }
 
-.blue{
-  background-color: #32489D;
-  color:white;
+.blue {
+    background-color: #32489d;
+    color: white;
 }
 
-.lightblue{
-  background-color: #697FBF;
-  color:#14194A;
+.lightblue {
+    background-color: #697fbf;
+    color: #14194a;
 }
 
-.brightred{
-    background-color: #F25C5C;
-    color:white;
+.brightred {
+    background-color: #f25c5c;
+    color: white;
 }
 
-.lightpink{
-    background-color: #F2D5D5;
-    color:#293473;
+.lightpink {
+    background-color: #f2d5d5;
+    color: #293473;
 }
 
-
-form, textarea{
-  background-color: inherit;
-  border:none;
+form,
+textarea {
+    background-color: inherit;
+    border: none;
 }
 
-
-section.memoList{
-  width:200px;
+section.memoList {
+    width: 200px;
 }
 
-section.memoList li{
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
+section.memoList li {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
 }
 
-section.memoList .circle{
-  margin-right:0.5rem;
-  width:15px;
-  height:15px;
-  display: inline-block;
+section.memoList .circle {
+    margin-right: 0.5rem;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
 }
 
 /* section.memos{
@@ -61,122 +60,118 @@ section.memoList .circle{
   padding:2rem;
 } */
 
-section.memoSection{
-  width:80vw;
-  height:100vh;
+section.memoSection {
+    width: 80vw;
+    height: 100vh;
 }
 
 a {
-  text-decoration:none;
-
+    text-decoration: none;
 }
 
-div.post{
-  width: 350px;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  left:400px;
-  position: absolute;
-  z-index: 0;
+div.post {
+    width: 350px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    left: 400px;
+    position: absolute;
+    z-index: 0;
 }
 
-div.post header{
-  padding:10px;
+div.post header {
+    padding: 10px;
 }
 
-
-div.post header.postHeader img{
-  width:13px;
-  margin-right: 3px;
-  
+div.post header.postHeader img {
+    width: 13px;
+    margin-right: 3px;
 }
 
-div.post .postHeader{
-  padding: 10px 10px 5px 10px;
+div.post .postHeader {
+    padding: 10px 10px 5px 10px;
 }
 
-div.post textarea{
-  padding: 0 10px;
-  width:100%;
-  font-family: inherit;
-  min-height: 250px;
-  color:inherit;
+div.post textarea {
+    padding: 0 10px;
+    width: 100%;
+    font-family: inherit;
+    min-height: 250px;
+    color: inherit;
 }
 
-div.post textarea:focus{
-  outline:none;
-
+div.post textarea:focus {
+    outline: none;
 }
 
-div.contextMenu{
-  position: absolute;
-  font-size: 0.8rem;
-  border:1px solid gray;
-  z-index: 100;
-  background-color:white;
-  transform:scale(0);
-  opacity: 0;
+div.contextMenu {
+    position: absolute;
+    font-size: 0.8rem;
+    border: 1px solid gray;
+    z-index: 100;
+    background-color: white;
+    transform: scale(0);
+    opacity: 0;
 }
 
-div.contextMenu li.contextItem{
-  padding:10px;
+div.contextMenu li.contextItem {
+    padding: 10px;
 }
 
-/* div.contextMenu li.contextItem:hover{
-  background-color: #F25C5C;
-  color:white;
-} */
-
-li.colorLi div{
-  width:15px;
-  height: 15px;
-  border-radius: 50%;
-  margin-right: 5px;
+li.contextItem:hover,
+li.bgLi:hover {
+    background-color: #f25c5c;
+    color: white;
+    cursor: pointer;
 }
 
-li.colorLi div:hover{
-	border:1px solid gray;
+li.colorLi div {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 
-li.colorLi{
-  margin-top: 10px;
-  display: inline-block;
+li.colorLi div:hover {
+    border: 1px solid gray;
 }
 
-
-div.bgMenu li{
-  padding:10px;
+li.colorLi {
+    margin-top: 10px;
+    display: inline-block;
 }
 
-div.menuShow{
-  opacity: 1;
-  transform:scale(1);
-  transform-origin: top left;
+li.bgLi {
+    padding: 10px;
 }
 
-
-div.login{
-  width: 250px;
-  padding:15px;
-  border:1px solid gray;
-  height:200px;
-  position: absolute;
-  z-index: 60;
-  background-color: white;
-  right: 100px;
-  top:100px;
+div.menuShow {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top left;
 }
 
-div.login input{
-  border: 1px solid gray;
-  margin:10px 0;
+div.login {
+    width: 250px;
+    padding: 15px;
+    border: 1px solid gray;
+    height: 200px;
+    position: absolute;
+    z-index: 60;
+    background-color: white;
+    right: 100px;
+    top: 100px;
 }
 
-input[type=submit]{
-  padding:10px;
-  background-color: black;
-  color:white;
-  margin-top: 0;
-  border:0;
-  outline: none;
+div.login input {
+    border: 1px solid gray;
+    margin: 10px 0;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    margin-top: 0;
+    border: 0;
+    outline: none;
 }

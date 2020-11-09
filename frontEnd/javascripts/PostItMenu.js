@@ -3,9 +3,6 @@ import FetchClass from './FetchClass.js'
 
 
 class PostItMenu extends ContextMenu{
-    // constructor(){
-    //     this.menu = menu
-    // }
 
     rightButtonClick(clickedItem, clientY, clientX){ //overwriting하는것 숙제
         super.rightButtonClick(clientY, clientX);
@@ -44,7 +41,7 @@ class PostItMenu extends ContextMenu{
             switch(target.dataset.name){
                 case "color":
                     this.memoColorChange(target.className)
-                    FetchClass.colorChange(this.clickedItem, target.className, this.listRender)
+                    FetchClass.colorChange(this.clickedItem, target.className, this.updateData)
                     break;
             }   
         })

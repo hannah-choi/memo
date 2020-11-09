@@ -68,7 +68,7 @@ memoSection.addEventListener('contextmenu', (e)=>{
 })
 
 memoSection.addEventListener('change', ({target})=>{
-    if (target.tagName == !"TEXTAREA"){
+    if (target.tagName ==! "TEXTAREA"){
         return;
     }
     memoApp.updateMemo(target.dataset.id, target.value); 
@@ -78,7 +78,7 @@ memoSection.addEventListener('change', ({target})=>{
 
 
 memoSection.addEventListener('dragstart',(e)=>{
-    if(e.target.className == !'post'){
+    if(e.target.className ==! 'post'){
         return;
     } 
     memoApp.dragStart(e)
@@ -86,7 +86,7 @@ memoSection.addEventListener('dragstart',(e)=>{
 
 memoSection.addEventListener('dragover',(e)=>{
     e.preventDefault();
-    if(e.target.className == !'post'){
+    if(e.target.className ==! 'post'){
         return;
     }
 })
