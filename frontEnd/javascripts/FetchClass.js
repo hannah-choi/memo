@@ -1,7 +1,7 @@
 class FetchClass{
     static data;
     getData(updateData){
-        fetch('http://localhost:8440/post',
+        fetch(`post`,
             {
                 method:'get',
                 headers:{
@@ -22,30 +22,30 @@ class FetchClass{
         const findData = FetchClass.data.find(item => item.id === +selected.dataset.id)
         findData.pageX = pageXValue;
         findData.pageY = pageYValue;
-        fetch(`http://localhost:8440/post/position?id=${+selected.dataset.id}&pageX=${pageXValue.slice(0,-2)}&pageY=${pageYValue.slice(0,-2)}`)
+        fetch(`post/position?id=${+selected.dataset.id}&pageX=${pageXValue.slice(0,-2)}&pageY=${pageYValue.slice(0,-2)}`)
             .then(res => res.text)
     }
 
     static colorChange(selected, changedColor, updateData){
         const findData = FetchClass.data.find(item => item.id === +selected.dataset.id);
         findData.color = changedColor;
-        fetch(`http://localhost:8440/post/color?id=${findData.id}&color=${changedColor}`)
+        fetch(`post/color?id=${findData.id}&color=${changedColor}`)
             .then(res => res.json())
             .then(result => updateData(result))
     }
 
     deleteMemo(id){
-        return fetch(`http://localhost:8440/post/delete?id=${id}`)
+        return fetch(`post/delete?id=${id}`)
                 .then(res => res.text())
     }
 
-    createMemo(x, y, createMemo){
-        fetch(`http://localhost:8440/post/create`, {
+    createMemo(color, x, y, createMemo){
+        fetch(`post/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({pageX: x-200, pageY: y})
+              body: JSON.stringify({color: color, pageX: x-200, pageY: y})
             })
         .then(res => res.json())
         .then(result => {
@@ -55,7 +55,7 @@ class FetchClass{
     }
 
     deleteAllMemo(){
-        return fetch(`http://localhost:8440/post/all`, 
+        return fetch(`post/all`, 
         {
             method:'DELETE'
         })
@@ -63,7 +63,7 @@ class FetchClass{
     }
 
     updateMemo(id, newValue){
-        fetch(`http://localhost:8440/post`, 
+        fetch(`post`, 
         {
             method:'PUT',
             headers: {
@@ -75,7 +75,7 @@ class FetchClass{
     }
 
     colorFilter(color, filterData){
-        fetch(`http://localhost:8440/post/filter?color=${color}`)
+        fetch(`post/filter?color=${color}`)
         .then(res => res.json())
         .then(result => {
             filterData(result);           

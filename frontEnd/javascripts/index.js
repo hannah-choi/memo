@@ -13,10 +13,17 @@ const postItMenu = new PostItMenu(memoApp.updateData, memoSection)
 const bgMenu = new BgMenu(memoApp.updateData, memoSection)
 const filterSection = document.querySelector('.memoList')
 
+function getColor(){
+    const colors = ['lightblue','blue','brightred','lightpink']
+    const index = Math.floor(Math.random() * 4)
+    console.log(colors[index])
+    return colors[index]
+}
+
 body.addEventListener('click', (e)=>{
     switch(e.target.dataset.name){
         case "create":
-            fetchClass.createMemo(e.clientX, e.clientY, memoApp.createMemo)
+            fetchClass.createMemo(getColor(), e.clientX, e.clientY, memoApp.createMemo)
             break;
         case "deleteAll":
             fetchClass.deleteAllMemo()

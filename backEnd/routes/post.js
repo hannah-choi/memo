@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
 })
 
 router.post('/create', (req, res) => {
-    db.query(`INSERT INTO MEMO(COLOR, PAGEX, PAGEY) VALUES('lightblue', '${req.body.pageX}', '${req.body.pageY}')`, (err, rows)=>{
+    db.query(`INSERT INTO MEMO(COLOR, PAGEX, PAGEY) VALUES('${req.body.color}', '${req.body.pageX}', '${req.body.pageY}')`, (err, rows)=>{
         if (err) throw err;
         res.send({ 
             text:"",
-            color:'lightblue',
+            color:`${req.body.color}`,
             id:rows.insertId,
             pageX:req.body.pageX,
             pageY:req.body.pageY                
@@ -61,7 +61,6 @@ router.delete('/all', (req, res)=>{
 router.get('/filter', (req,res)=>{
     db.query(`SELECT * FROM MEMO WHERE COLOR = '${req.query.color}'`, (err,rows)=>{
         if (err) throw err;
-        console.log(rows)
         res.send(rows);
     })
 })
