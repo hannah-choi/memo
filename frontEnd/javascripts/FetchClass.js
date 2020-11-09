@@ -25,8 +25,7 @@ class FetchClass{
         findData.pageX = pageXValue;
         findData.pageY = pageYValue;
         fetch(`http://localhost:8440/post/position?id=${+selected.dataset.id}&pageX=${pageXValue.slice(0,-2)}&pageY=${pageYValue.slice(0,-2)}`)
-            .then(res => res.json())
-            .then(result => updateData(result))
+            .then(res => res.text)
     }
 
     static colorChange(selected, changedColor, updateData){
@@ -58,6 +57,18 @@ class FetchClass{
         return fetch(`http://localhost:8440/post/all`, 
         {
             method:'DELETE'
+        })
+        .then(res => res.text())
+    }
+
+    updateMemo(id, newValue){
+        fetch(`http://localhost:8440/post`, 
+        {
+            method:'PUT',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+               },
+               body: JSON.stringify({ text: newValue, id: id })
         })
         .then(res => res.text())
     }

@@ -31,16 +31,16 @@ router.get('/color', (req,res)=>{
 router.get('/position', (req,res)=>{
     db.query(`UPDATE MEMO SET pageX = '${req.query.pageX}', pageY = '${req.query.pageY}' WHERE ID = ${req.query.id}`, (err)=>{
         if (err) throw err;
-        res.redirect('/');
+        res.send('success');
     })
 })
 
 router.put('/', (req, res) => {
     const text = req.body.text;
-    const postid = req.body.id;
-    db.query(`UPDATE MEMO SET TEXT = ${text} WHERE ID = ${postid}`, (err) =>{
+    const postid = parseInt(req.body.id);
+    db.query(`UPDATE MEMO SET TEXT = "${text}" WHERE ID = ${postid}`, (err) =>{
         if (err) throw err;
-        res.redirect('/');
+        res.send('success');
     })
 })
 
