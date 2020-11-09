@@ -8,23 +8,23 @@ const memoSection = document.querySelector('.memoSection')
 const body = document.querySelector('body')
 const memoApp = new MemoManager()
 const fetchClass = new FetchClass()
-fetchClass.getData(memoApp.listRender)
-const postItMenu = new PostItMenu(memoApp.listRender, memoSection)
-const bgMenu = new BgMenu(memoApp.listRender, memoSection)
+fetchClass.getData(memoApp.updateData)
+const postItMenu = new PostItMenu(memoApp.updateData, memoSection)
+const bgMenu = new BgMenu(memoApp.updateData, memoSection)
 const filterSection = document.querySelector('.memoList')
 
 body.addEventListener('click', (e)=>{
     switch(e.target.dataset.name){
         case "create":
-            fetchClass.createMemo(e.clientX, e.clientY, memoApp.listRender)
+            fetchClass.createMemo(e.clientX, e.clientY, memoApp.createMemo)
             break;
         case "deleteAll":
             memoApp.deleteAllMemo();
-            fetchClass.deleteAllMemo(memoApp.listRender);
+            fetchClass.deleteAllMemo(memoApp.updateData);
             break;
         case "remove":
             memoApp.removeMemo(e.target.dataset.id)
-            fetchClass.removeMemo(+e.target.dataset.id, memoApp.listRender)
+            fetchClass.removeMemo(+e.target.dataset.id, memoApp.updateData)
             break;
         case "minimize":
             memoApp.minimize(e.target.parentElement.parentElement)
@@ -89,14 +89,14 @@ memoSection.addEventListener('drop', (e)=>{
     const pageXValue = e.pageX-200 - memoApp.shiftX + "px";
     const pageYValue = e.pageY - memoApp.shiftY + "px";
     memoApp.drop(selected, pageXValue, pageYValue)
-    fetchClass.pageUpdate(selected, pageXValue, pageYValue, memoApp.listRender)
+    fetchClass.pageUpdate(selected, pageXValue, pageYValue, memoApp.updateData)
 })
 
 filterSection.addEventListener('click', (e)=>{
     if(e.target.tagName === 'SECTION'){
         return;
     } else if (e.target.dataset.name === 'all'){
-        fetchClass.getData(memoApp.listRender)
+        fetchClass.getData(memoApp.updateData)
     } else {    
-        fetchClass.colorFilter(e.target.dataset.name, memoApp.listRender)}
+        fetchClass.colorFilter(e.target.dataset.name, memoApp.updateData)}
 })

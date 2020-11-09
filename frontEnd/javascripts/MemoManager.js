@@ -7,6 +7,23 @@ class MemoManager{
         this.selected = null;
         this.shiftX = null;
         this.shiftY = null;
+        this.data = null;
+        this.firstLoad = false;
+    }
+
+    updateData = (data) => {
+        this.data = data;
+        if(this.firstLoad === false){
+            this.memos = this.data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
+            this.firstLoad = true;
+        }
+        this.listRender();
+    }
+
+    createMemo = (data) => {
+        const memo = new Memo("", "lightblue", data.id, data.pageX, data.pageY);
+        this.memos.push(memo);
+        this.listRender();
     }
 
     removeMemo(selected){
@@ -72,12 +89,7 @@ class MemoManager{
         selected.style.top = pageYvalue;
     }
     
-    listRender = (data) => { //데이터를 받아서 리스트를 그려주는 역할
-        if(!Array.isArray){
-            const memo = new Memo("", "lightblue", data.id, data.pageX, data.pageY);
-            this.memos.push(memo);
-        }
-        this.memos = data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
+    listRender(){ //데이터를 받아서 리스트를 그려주는 역할
         const memosArray = this.memos.map(memo => memo.render()).join('');
         this.memoSection.innerHTML = memosArray;
     }
