@@ -26,9 +26,10 @@ class MemoManager{
         this.listRender();
     }
 
-    removeMemo(selected){
-        const selectedId = this.memos.findIndex(data => data.id === +selected);
+    deleteMemo(selected){
+        const selectedId = this.memos.findIndex(data => data.memoId === +selected);
         this.memos.splice(selectedId, 1);
+        this.listRender();
     }
 
     deleteAllMemo(){

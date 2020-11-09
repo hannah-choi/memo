@@ -22,9 +22,13 @@ body.addEventListener('click', (e)=>{
             memoApp.deleteAllMemo();
             fetchClass.deleteAllMemo(memoApp.updateData);
             break;
-        case "remove":
-            memoApp.removeMemo(e.target.dataset.id)
-            fetchClass.removeMemo(+e.target.dataset.id, memoApp.updateData)
+        case "delete":
+            fetchClass.deleteMemo(+e.target.dataset.id)
+            .then(text => {
+                if(text === 'success'){
+                memoApp.deleteMemo(e.target.dataset.id)
+                }
+            })
             break;
         case "minimize":
             memoApp.minimize(e.target.parentElement.parentElement)

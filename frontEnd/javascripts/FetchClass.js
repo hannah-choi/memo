@@ -37,10 +37,10 @@ class FetchClass{
             .then(result => updateData(result))
     }
 
-    removeMemo(id, updateData){
-        fetch(`http://localhost:8440/post/delete?id=${id}`)
-        .then(res => res.json())
-        .then(result => updateData(result))
+    deleteMemo(id){
+        console.log(id)
+        return fetch(`http://localhost:8440/post/delete?id=${id}`)
+                .then(res => res.text())
     }
 
     createMemo(x, y, createMemo){
