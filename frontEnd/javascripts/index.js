@@ -75,8 +75,6 @@ memoSection.addEventListener('change', ({target})=>{
     fetchClass.updateMemo(target.dataset.id, target.value);
 }) 
 
-
-
 memoSection.addEventListener('dragstart',(e)=>{
     if(e.target.className ==! 'post'){
         return;
@@ -93,13 +91,13 @@ memoSection.addEventListener('dragover',(e)=>{
 
 memoSection.addEventListener('drop', (e)=>{
     e.preventDefault();
-    const id = e.dataTransfer.getData("text")
-    const selected = document.querySelector(`[data-id="${id}"]`)    
+    const id = e.dataTransfer.getData("text");
+    const selected = document.querySelector(`[data-id="${id}"]`);   
     const pageXValue = e.pageX-200 - memoApp.shiftX + "px";
     const pageYValue = e.pageY - memoApp.shiftY + "px";
-    memoApp.drop(selected, pageXValue, pageYValue)
-    fetchClass.pageUpdate(selected, pageXValue, pageYValue, memoApp.updateData)
-})
+    memoApp.drop(selected, pageXValue, pageYValue);
+    fetchClass.pageUpdate(selected, pageXValue, pageYValue, memoApp.updateData);
+});
 
 filterSection.addEventListener('click', (e)=>{
     if(e.target.tagName === 'SECTION'){
@@ -108,4 +106,4 @@ filterSection.addEventListener('click', (e)=>{
         fetchClass.getData(memoApp.updateData)
     } else {    
         fetchClass.colorFilter(e.target.dataset.name, memoApp.updateData)}
-})
+});

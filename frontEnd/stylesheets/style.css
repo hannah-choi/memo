@@ -40,6 +40,7 @@ textarea {
 
 section.memoList {
     width: 200px;
+    padding: 25px 0 0 25px;
 }
 
 section.memoList li {
@@ -54,11 +55,6 @@ section.memoList .circle {
     height: 15px;
     display: inline-block;
 }
-
-/* section.memos{
-  width:85%;
-  padding:2rem;
-} */
 
 section.memoSection {
     width: 80vw;
@@ -88,11 +84,11 @@ div.post header.postHeader img {
 }
 
 div.post .postHeader {
-    padding: 10px 10px 5px 10px;
+    padding: 15px 15px 5px 15px;
 }
 
 div.post textarea {
-    padding: 0 10px;
+    padding: 0 15px;
     width: 100%;
     font-family: inherit;
     min-height: 250px;
@@ -117,7 +113,6 @@ div.contextMenu li.contextItem {
     padding: 10px;
 }
 
-li.contextItem:hover,
 li.bgLi:hover {
     background-color: #f25c5c;
     color: white;
@@ -129,10 +124,13 @@ li.colorLi div {
     height: 15px;
     border-radius: 50%;
     margin-right: 5px;
+    border: 2px solid white;
+    box-sizing: content-box;
+    cursor: pointer !important;
 }
 
 li.colorLi div:hover {
-    border: 1px solid gray;
+    box-shadow: 0 0 0 1px #f25c5c;
 }
 
 li.colorLi {

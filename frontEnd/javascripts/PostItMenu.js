@@ -19,7 +19,6 @@ class PostItMenu extends ContextMenu{
         const temp = document.createElement('div')
         temp.innerHTML = `<div class = "contextMenu">
 		<ul>
-			<li class = "contextItem">COPY</li>
 			<li class = "contextItem">COLOR
 				<ul>
 					<li class="colorLi"><div class="blue" data-name="color"></div></li>
