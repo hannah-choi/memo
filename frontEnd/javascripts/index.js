@@ -3,7 +3,6 @@ import MemoManager from './MemoManager.js'
 import ContextMenu from './ContextMenu.js'
 import BgMenu from './BgMenu.js'
 import PostItMenu from './PostItMenu.js'
-import Login from './Login.js'
 
 const memoSection = document.querySelector('.memoSection')
 const body = document.querySelector('body')
@@ -13,28 +12,6 @@ fetchClass.getData(memoApp.listRender)
 const postItMenu = new PostItMenu(memoApp.listRender, memoSection)
 const bgMenu = new BgMenu(memoApp.listRender, memoSection)
 const filterSection = document.querySelector('.memoList')
-
-const users = [
-    {
-        userid:1,
-        username: "aaa",
-        password: "123"
-    },
-
-    {
-        userid:2,
-        username: "bbb",
-        password: "456"
-    }, 
-
-    {
-        userid:3,
-        username: "ccc",
-        password: "789"
-    },
-]
-
-const login = new Login(users)
 
 body.addEventListener('click', (e)=>{
     switch(e.target.dataset.name){
@@ -53,13 +30,10 @@ body.addEventListener('click', (e)=>{
             memoApp.minimize(e.target.parentElement.parentElement)
             break;
         case "maximize":
-            memoApp.maximize(e.target)
+            memoApp.maximize(e.target.parentElement.parentElement)
             break;
         case "post":
             memoApp.bringFront(postItMenu.targetConvert(e.target))
-            break;
-        case "login":
-            login.loginCheck()
             break;
         default:
             ContextMenu.remove()
@@ -67,7 +41,6 @@ body.addEventListener('click', (e)=>{
         }
     })
 
-    
 memoSection.addEventListener('contextmenu', (e)=>{
     e.preventDefault(); 
     let clickedItem = ""

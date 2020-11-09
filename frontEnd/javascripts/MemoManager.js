@@ -2,8 +2,6 @@ import Memo from './Memo.js'
 
 class MemoManager{
     constructor(){
-        //this.listRender()
-        // console.log(this.data)
         this.memoSection = document.querySelector('.memoSection')
         this.memos = null;
         this.selected = null;
@@ -14,7 +12,6 @@ class MemoManager{
     removeMemo(selected){
         const selectedId = this.memos.findIndex(data => data.id === +selected);
         this.memos.splice(selectedId, 1);
-        //this.listRender()
     }
 
     deleteAllMemo(){
@@ -24,7 +21,6 @@ class MemoManager{
     updateMemo(selected, newValue){
         const selectedId = this.memos.findIndex(data => data.memoId === +selected);
         this.memos[selectedId].memoContents = newValue;
-        //console.log(this.memos[selectedId].memoContents)
         this.listRender()
     }
 
@@ -41,9 +37,14 @@ class MemoManager{
     }
 
     maximize(selected){
-        selected.parentElement.nextElementSibling.style.display = "block";
+        selected.children[1].style.display = "block";
         selected.src = "images/minimize.svg";
-        selected.dataset.name = 'minimize';
+        let headerText = selected.querySelector('.headerText');
+        if(headerText){
+            headerText.innerHTML = '';
+        } 
+        selected.querySelector('.minimize').src = "images/minimize.svg";
+        selected.querySelector('.minimize').dataset.name = 'minimize';
     }
 
     bringFront(clickedItem){
