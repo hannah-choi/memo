@@ -38,7 +38,6 @@ class FetchClass{
     }
 
     deleteMemo(id){
-        console.log(id)
         return fetch(`http://localhost:8440/post/delete?id=${id}`)
                 .then(res => res.text())
     }
