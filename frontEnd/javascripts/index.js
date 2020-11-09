@@ -19,16 +19,20 @@ body.addEventListener('click', (e)=>{
             fetchClass.createMemo(e.clientX, e.clientY, memoApp.createMemo)
             break;
         case "deleteAll":
-            memoApp.deleteAllMemo();
-            fetchClass.deleteAllMemo(memoApp.updateData);
+            fetchClass.deleteAllMemo()
+            .then(text => {
+                if(text === 'success'){
+                    memoApp.deleteAllMemo();
+                }}
+            )
             break;
         case "delete":
             fetchClass.deleteMemo(+e.target.dataset.id)
             .then(text => {
                 if(text === 'success'){
                 memoApp.deleteMemo(e.target.dataset.id)
-                }
-            })
+                }}
+            )
             break;
         case "minimize":
             memoApp.minimize(e.target.parentElement.parentElement)

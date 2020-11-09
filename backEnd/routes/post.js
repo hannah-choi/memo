@@ -46,7 +46,6 @@ router.put('/', (req, res) => {
 
 router.get('/delete', (req, res)=>{
     db.query(`DELETE FROM MEMO WHERE ID = ${req.query.id}`, (err)=>{
-        console.log(`DELETE FROM MEMO WHERE ID = ${req.query.id}`)
         if (err) throw err;
         res.send('success')
     })
@@ -55,7 +54,7 @@ router.get('/delete', (req, res)=>{
 router.delete('/all', (req, res)=>{
     db.query(`DELETE FROM MEMO`, (err)=>{
         if (err) throw err;
-        res.redirect('/');
+        res.send('success')
     })
 })
 

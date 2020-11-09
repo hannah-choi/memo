@@ -16,17 +16,3 @@ INSERT INTO memo (id, color, pageX, pageY, text, userID) VALUES ##insert문은 �
 (12, 'brightred', 220, 430, 'asdasdads', 22),
 (49, 'lightblue', -3, 385, null, null);
 
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `userID` smallint NOT NULL,
-  `username` varchar(15) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`userID`),
-  UNIQUE KEY `user_username_uindex` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
-INSERT INTO user (userID, username, password) VALUES
-(0, 'aaa', '111'),
-(1, 'bbb', '222'),
-(2, 'ccc', '333');

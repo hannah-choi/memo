@@ -34,6 +34,7 @@ class MemoManager{
 
     deleteAllMemo(){
         this.memos.splice(0);
+        this.listRender();
     }
 
     updateMemo(selected, newValue){
