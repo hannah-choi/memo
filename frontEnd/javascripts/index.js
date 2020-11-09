@@ -99,11 +99,12 @@ memoSection.addEventListener('drop', (e)=>{
     fetchClass.pageUpdate(selected, pageXValue, pageYValue, memoApp.updateData);
 });
 
-filterSection.addEventListener('click', (e)=>{
-    if(e.target.tagName === 'SECTION'){
+filterSection.addEventListener('click', ({target})=>{
+    if(target.tagName === 'SECTION' || target.tagName === 'UL'){
         return;
-    } else if (e.target.dataset.name === 'all'){
-        fetchClass.getData(memoApp.updateData)
-    } else {    
-        fetchClass.colorFilter(e.target.dataset.name, memoApp.updateData)}
+    } 
+    if (target.dataset.name === 'all'){
+        fetchClass.getData(memoApp.filterData)
+    } else {
+        fetchClass.colorFilter(target.dataset.name, memoApp.filterData)}
 });

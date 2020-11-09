@@ -20,8 +20,22 @@ class MemoManager{
         this.listRender();
     }
 
+    filterData = (data) => {
+        this.firstLoad = false;
+        this.data = data;
+        this.memos = this.data.map(data => new Memo(data.text, data.color, data.id, data.pageX, data.pageY));
+        this.firstLoad = true;
+        this.listRender();
+    }
+
+    getColor(){
+        const colors = ['lightblue','blue','brightred','lightpink']
+        const index = Math.floor(Math.random() * 5)
+        return colors[index]
+    }
+
     createMemo = (data) => {
-        const memo = new Memo("", "lightblue", data.id, data.pageX, data.pageY);
+        const memo = new Memo("", `${this.getColor()}`, data.id, data.pageX, data.pageY);
         this.memos.push(memo);
         this.listRender();
     }

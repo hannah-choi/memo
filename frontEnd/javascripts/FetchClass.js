@@ -74,12 +74,11 @@ class FetchClass{
         .then(res => res.text())
     }
 
-    colorFilter(color, updateData){
+    colorFilter(color, filterData){
         fetch(`http://localhost:8440/post/filter?color=${color}`)
         .then(res => res.json())
         .then(result => {
-            updateData(result);
-            FetchClass.data = result;
+            filterData(result);           
         })
     }
 }

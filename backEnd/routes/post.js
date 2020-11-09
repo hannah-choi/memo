@@ -58,10 +58,10 @@ router.delete('/all', (req, res)=>{
     })
 })
 
-
 router.get('/filter', (req,res)=>{
     db.query(`SELECT * FROM MEMO WHERE COLOR = '${req.query.color}'`, (err,rows)=>{
         if (err) throw err;
+        console.log(rows)
         res.send(rows);
     })
 })
