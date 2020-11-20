@@ -10,11 +10,13 @@ class FetchClass{
                 },
             }
             )
-            .then(res => res.json())
-            .then(result => {
-                updateData(result);
-                FetchClass.data = result;
-            })
+            .then(res => res.text())
+            .then(result => console.log(result))
+            // .then(res => res.json())
+            // .then(result => {
+            //     updateData(result);
+            //     FetchClass.data = result;
+            // })
 
     }
 
