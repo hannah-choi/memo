@@ -7,7 +7,7 @@ class FetchClass{
                 headers:{
                     "Accept": "application/json",
                     "Content-type": "application/json; charset = UTF-8"
-                }
+                },
             }
             )
             .then(res => res.json())
