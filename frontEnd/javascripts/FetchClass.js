@@ -1,87 +1,87 @@
-class FetchClass{
+class FetchClass {
     static data;
-    getData(updateData){
-        fetch(`post`,
-            {
-                method:'get',
-                headers:{
-                    "Accept": "application/json",
-                    "Content-type": "application/json; charset = UTF-8"
-                },
-            }
-            )
-            .then(res => console.log(res))
+    getData(updateData) {
+        fetch(`post`, {
+            method: "get",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json; charset = UTF-8",
+            },
+        })
+            // .then(res => console.log(res))
             //.then(result => console.log(result))
-            // .then(res => res.json())
-            // .then(result => {
-            //     updateData(result);
-            //     FetchClass.data = result;
-            // })
-
+            .then(res => res.json())
+            .then(result => {
+                updateData(result);
+                FetchClass.data = result;
+            });
     }
 
-    pageUpdate(selected, pageXValue, pageYValue){
-        const findData = FetchClass.data.find(item => item.id === +selected.dataset.id)
+    pageUpdate(selected, pageXValue, pageYValue) {
+        const findData = FetchClass.data.find(
+            item => item.id === +selected.dataset.id
+        );
         findData.pageX = pageXValue;
         findData.pageY = pageYValue;
-        fetch(`post/position?id=${+selected.dataset.id}&pageX=${pageXValue.slice(0,-2)}&pageY=${pageYValue.slice(0,-2)}`)
-            .then(res => res.text)
+        fetch(
+            `post/position?id=${+selected.dataset.id}&pageX=${pageXValue.slice(
+                0,
+                -2
+            )}&pageY=${pageYValue.slice(0, -2)}`
+        ).then(res => res.text);
     }
 
-    static colorChange(selected, changedColor, updateData){
-        const findData = FetchClass.data.find(item => item.id === +selected.dataset.id);
+    static colorChange(selected, changedColor, updateData) {
+        const findData = FetchClass.data.find(
+            item => item.id === +selected.dataset.id
+        );
         findData.color = changedColor;
         fetch(`post/color?id=${findData.id}&color=${changedColor}`)
             .then(res => res.json())
-            .then(result => updateData(result))
+            .then(result => updateData(result));
     }
 
-    deleteMemo(id){
-        return fetch(`post/delete?id=${id}`)
-                .then(res => res.text())
+    deleteMemo(id) {
+        return fetch(`post/delete?id=${id}`).then(res => res.text());
     }
 
-    createMemo(color, x, y, createMemo){
+    createMemo(color, x, y, createMemo) {
         fetch(`post/create`, {
-            method: 'POST',
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({color: color, pageX: x-200, pageY: y})
-            })
-        .then(res => res.json())
-        .then(result => {
-                createMemo(result)
-                FetchClass.data.push(result)
-            })
-    }
-
-    deleteAllMemo(){
-        return fetch(`post/all`, 
-        {
-            method:'DELETE'
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ color: color, pageX: x - 200, pageY: y }),
         })
-        .then(res => res.text())
+            .then(res => res.json())
+            .then(result => {
+                createMemo(result);
+                FetchClass.data.push(result);
+            });
     }
 
-    updateMemo(id, newValue){
-        fetch(`post`, 
-        {
-            method:'PUT',
+    deleteAllMemo() {
+        return fetch(`post/all`, {
+            method: "DELETE",
+        }).then(res => res.text());
+    }
+
+    updateMemo(id, newValue) {
+        fetch(`post`, {
+            method: "PUT",
             headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-               },
-               body: JSON.stringify({ text: newValue, id: id })
-        })
-        .then(res => res.text())
+                "Content-type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify({ text: newValue, id: id }),
+        }).then(res => res.text());
     }
 
-    colorFilter(color, filterData){
+    colorFilter(color, filterData) {
         fetch(`post/filter?color=${color}`)
-        .then(res => res.json())
-        .then(result => {
-            filterData(result);           
-        })
+            .then(res => res.json())
+            .then(result => {
+                filterData(result);
+            });
     }
 }
 
