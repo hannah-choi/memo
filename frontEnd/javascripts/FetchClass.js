@@ -8,8 +8,6 @@ class FetchClass {
                 "Content-type": "application/json; charset = UTF-8",
             },
         })
-            // .then(res => console.log(res))
-            //.then(result => console.log(result))
             .then(res => res.json())
             .then(result => {
                 updateData(result);
