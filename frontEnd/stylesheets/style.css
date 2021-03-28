@@ -173,3 +173,33 @@ input[type="submit"] {
     border: 0;
     outline: none;
 }
+
+footer {
+    position: absolute;
+    width: 100%;
+    color: #3c221c;
+    font-size: 0.85rem;
+    margin: 0 auto;
+    justify-content: space-between;
+    bottom: 30px;
+}
+
+footer a {
+    margin-top: 10px;
+    width: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #3c221c;
+}
+
+footer a img {
+    width: 15px;
+}
+
+footer a:hover {
+    background-color: transparent;
+    color: #f25c5c;
+    cursor: pointer;
+}
